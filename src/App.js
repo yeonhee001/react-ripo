@@ -1,24 +1,67 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom'
+
+import Splash from './pages/Splash';
+import Home from './pages/01-home/Home';
+import SearchPage from './pages/02-search/SearchPage';
+import SearchDetail from './pages/02-search/SearchDetail';
+import Category from './pages/03-category/Category';
+import ProductList from './pages/04-product/ProductList';
+import ProductDetail from './pages/04-product/ProductDetail';
+import CartList from './pages/05-cart/CartList';
+import Pay from './pages/06-pay/Pay';
+import PayDone from './pages/06-pay/PayDone';
+import My from './pages/07-mypage/My';
+import Faq from './pages/07-mypage/Faq';
+import Inquiry from './pages/07-mypage/Inquiry';
+import Notice from './pages/07-mypage/Notice';
+import OrderList from './pages/07-mypage/OrderList';
+import Login from './pages/00-login/Login';
+import Signup from './pages/00-login/Signup';
+import './styles/_style.scss';
 
 function App() {
+  // // 렌더링 전에 splash로 보낼지 판단
+  // const pathname = window.location.pathname;
+  // const isFirstVisit = !localStorage.getItem("visited");
+  // const isRoot = pathname === "/";
+
+  // if (isFirstVisit && isRoot) {
+  //   localStorage.setItem("visited", "true");
+  //   window.location.replace("/splash");
+  //   return null; 
+  // }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <main>
+        <Routes>
+          <Route path='/splash' element={<Splash/>}/>
+          <Route path='/' element={<Home/>}/>
+
+          <Route path='/search' element={<SearchPage/>}/>
+          <Route path='/search/searchdetail/:word' element={<SearchDetail/>}/>
+
+          <Route path='/category' element={<Category/>}/>
+
+          <Route path='/product' element={<ProductList/>}/>
+          <Route path='/product/productdetail/:id' element={<ProductDetail/>}/>
+
+          <Route path='/cart' element={<CartList/>}/>
+
+          <Route path='/pay' element={<Pay/>}/>
+          <Route path='/pay/done' element={<PayDone/>}/>
+
+          <Route path='/my' element={<My/>}/>
+          <Route path='/my/faq' element={<Faq/>}/>
+          <Route path='/my/inquiry' element={<Inquiry/>}/>
+          <Route path='/my/notice' element={<Notice/>}/>
+          <Route path='/my/orderlist' element={<OrderList/>}/>
+
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+        </Routes>
+      </main>
+    </Router>
   );
 }
 
