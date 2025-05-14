@@ -1,12 +1,12 @@
-@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff');
-@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff');
-@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff');
+@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.css');
+@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.css');
+@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.css');
 // font-family: 'S-CoreDream-3Light';
 // font-family: 'S-CoreDream-4Regular';
 // font-family: 'S-CoreDream-5Medium';
 
 *{box-sizing: border-box; padding:0; margin: 0; word-break: keep-all;} 
-html{font-size: 14px; color: #333; background-color: #eee;
+html{font-size: 16px; color: #333; background-color: #eee;
     // scrollbar-width: none; /* Firefox */
 } 
 body{ 
@@ -16,7 +16,7 @@ body{
     -webkit-tap-highlight-color: transparent;
     margin: 0 auto; padding: 0 38px;
     width: 768px; min-height: 100vh;
-    font-family:'NanumSquare';
+    font-family:'S-CoreDream-4Regular';
     background-color: white;
 }
 // body::-webkit-scrollbar {display: none; /* Chrome, Safari, Opera */}
@@ -24,14 +24,14 @@ h1,h2,h3,h4,h5,p,figure{margin: 0; padding: 0;}
 ol,ul,li{list-style: none; margin: 0; padding:0;}
 button{
     border: 0; margin: 0; padding: 0; background-color: transparent; 
-    font-family: "NanumSquare";
+    font-family: "S-CoreDream-4Regular";
     color: #333;
 }
 img{border: 0; vertical-align: middle; object-fit: cover;}
 a{text-decoration: none; color: #333;}
 input, textarea{
     border:0;
-    font-family: "NanumSquare";
+    font-family: "S-CoreDream-4Regular";
     color: #333;
 }
 ::before,::after{margin:0; padding: 0; box-sizing: border-box;}
