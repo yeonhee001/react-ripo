@@ -8,8 +8,14 @@ function CloseIcon({className, goto}) {
     if(to) navi(to);
   }
 
+<<<<<<< HEAD
   return (
     <div className={className} onClick={()=>closeClick(goto)}>
+=======
+function CloseIcon({className, onClick}) {
+  return (
+    <div className={className} onClick={onClick}>
+>>>>>>> origin/jiho
         <img src="/imgs/_icons/CloseIcon.svg" alt="closeicon"/>
     </div>
   )

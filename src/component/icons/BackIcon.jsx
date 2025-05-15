@@ -1,9 +1,9 @@
 import React from 'react'
 
-function BackIcon({className}) {
+function BackIcon({className, onClick}) {
   return (
-    <div className={className}>
-        <img src="/imgs/_icons/BackIcon.svg" alt="뒤로가기" />
+    <div className={className} onClick={onClick}>
+        <img src="/imgs/_icons/BackIcon.svg" alt="backicon" />
     </div>
   )
 }

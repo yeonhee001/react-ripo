@@ -18,6 +18,9 @@ import OrderList from './pages/07-mypage/OrderList';
 import Login from './pages/00-login/Login';
 import Signup from './pages/00-login/Signup';
 import './styles/_style.scss';
+import Header from './component/_common/Header';
+import MenuBar from './component/_common/MenuBar';
+import InquiryWrite from './pages/07-mypage/InquiryWrite';
 
 function App() {
   // // 렌더링 전에 splash로 보낼지 판단
@@ -33,6 +36,8 @@ function App() {
 
   return (
     <Router>
+      <Header/>
+
       <main>
         <Routes>
           <Route path='/splash' element={<Splash/>}/>
@@ -54,6 +59,7 @@ function App() {
           <Route path='/my' element={<My/>}/>
           <Route path='/my/faq' element={<Faq/>}/>
           <Route path='/my/inquiry' element={<Inquiry/>}/>
+          <Route path='/my/inquiry/write' element={<InquiryWrite/>}/>
           <Route path='/my/notice' element={<Notice/>}/>
           <Route path='/my/orderlist' element={<OrderList/>}/>
 
@@ -61,6 +67,8 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
         </Routes>
       </main>
+
+      <MenuBar/>
     </Router>
   );
 }
