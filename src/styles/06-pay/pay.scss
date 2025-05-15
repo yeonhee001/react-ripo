@@ -1,0 +1,94 @@
+.pay-top{
+    padding: 32px 0 10px;
+    font-family: 'S-CoreDream-5Medium';
+}
+
+.pay-input{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  p{
+    width: 62px;
+    flex-shrink: 0;
+  }
+  input{
+    width: 100%;
+    padding: 7px 0 7px 10px;
+    border: 1px solid #d9d9d9;
+    border-radius: 7px;
+    margin-left: 18px;
+  }
+  input:focus{
+    outline: none;
+    border-color: #BB9EE5;
+  }
+}
+// 인풋 전화번호 박스 우측에 화살표 없애기
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.paytype{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  .paytypebtn{
+    width: 50%;
+    border: 1px solid #EEE9FF;
+    border-radius: 100px;
+    padding: 10px 0;
+    .payname{
+      font-size: 14px;
+      text-align: center;
+    }
+  }
+  &.active{
+    background-color: #EEE9FF;
+  }
+}
+
+.pay-productprice01{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  .pay-title01{
+    font-size: 14px;
+    text-align: left;
+  }
+  .pay-price01{
+    font-size: 14px;
+    text-align: right;
+  }
+}
+
+.pay-productprice02{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  .pay-title02{
+    font-size: 20px;
+    text-align: left;
+  }
+  .pay-price02{
+    font-size: 20px;
+    text-align: right;
+  }
+}
+
+.btnlong-pay{
+  background-color: #C9B6E4 !important;
+  .btnlong-label{
+    color: #fff !important;
+  }
+}

@@ -1,8 +1,12 @@
 import React from 'react'
+import RightIcon from '../icons/RightIcon'
 
-function CategoryItem() {
+function CategoryItem({className, onClick, textClassName, label, iconclassName}) {
   return (
-    <div>CategoryItem</div>
+    <div className={className} onClick={onClick}>
+      <p className={textClassName}>{label}</p>
+      <span><RightIcon className={iconclassName}/></span>
+    </div>
   )
 }
 

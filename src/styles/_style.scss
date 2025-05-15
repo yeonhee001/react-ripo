@@ -1,9 +1,21 @@
-@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.css');
-@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.css');
-@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.css');
-// font-family: 'S-CoreDream-3Light';
-// font-family: 'S-CoreDream-4Regular';
-// font-family: 'S-CoreDream-5Medium';
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-4Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-4Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'S-CoreDream-5Medium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-5Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 *{box-sizing: border-box; padding:0; margin: 0; word-break: keep-all;} 
 html{font-size: 16px; color: #333; background-color: #EEE9FF;
@@ -14,8 +26,8 @@ body{
     // -webkit-user-select: none;
     -ms-overflow-style: none; /* IE 10+ */
     -webkit-tap-highlight-color: transparent;
-    margin: 0 auto; padding: 0 38px;
-    width: 768px; min-height: 100vh;
+    margin: 0 auto; padding: 0 18px;
+    width: 480px; min-height: 100vh;
     font-family:'S-CoreDream-4Regular';
     background-color: white;
 }
@@ -36,6 +48,194 @@ input, textarea{
 }
 ::before,::after{margin:0; padding: 0; box-sizing: border-box;}
 
+// 공통 긴 버튼 컴포넌트
+.btnlong{
+    background-color: #EEE9FF;
+    width: 100%;
+    padding: 16px 142px;
+    border-radius: 10px;
+    .btnlong-label{
+        font-family: 'S-CoreDream-5Medium';
+        font-size: 14px;
+        color: #555;
+        text-align: center;
+    }
+}
+.btnlong.active{
+    background-color: #C9B6E4;
+    .btnlong-label{
+        color: #fff;
+    }
+}
 
+// 공통 짧은 버튼 컴포넌트
+.btnshort-line{
+    width: 135px;
+    border: 1px solid #C9B6E4;
+    border-radius: 10px;
+    padding: 16px 24px;
+    >p{
+        font-family: 'S-CoreDream-5Medium';
+        font-size: 14px;
+        color: #555;
+        text-align: center;
+    }
+}
+.btnshort-fill{
+    width: 135px;
+    background-color: #C9B6E4;
+    border-radius: 10px;
+    padding: 16px 24px;
+    >p{
+        font-family: 'S-CoreDream-5Medium';
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+    }
+}
 
-@import './res-style.scss';
+// 내역없을 때 컴포넌트 infoMessage-5개
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 300px;
+    img{
+        width: 45px;
+    }
+    .info-text{
+        font-family: 'S-CoreDream-5Medium';
+        font-size: 22px;
+        text-align: center;
+        padding-top: 20px;
+        span{
+            padding-top: 10px;
+            font-family: 'S-CoreDream-3Light';
+            display: block;
+            font-size: 16px;
+            text-align: center;
+        }
+    }
+}
+// 상세문의탭 컴포넌트 infoMessage-1개
+.info-detailfaq{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    img{
+        width: 25px;
+    }
+    .info-text{
+        white-space: pre-line;
+        font-family: 'S-CoreDream-4Regular';
+        font-size: 16px;
+        text-align: center;
+        padding-top: 20px;
+        span{
+            padding-top: 10px;
+            font-size: 14px;
+        }
+    }
+}
+
+// 팝업버튼1
+.custom-popup01{
+    width: 300px;
+    padding: 20px 29px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 10px;
+}
+.custom-html-container01{
+    padding: 0 !important;
+}
+.custom-text01{
+    font-family: 'S-CoreDream-4Regular';
+    font-size: 14px;
+    text-align: left;
+}
+.custom-confirm-button01{
+    font-family: 'S-CoreDream-4Regular';
+    font-size: 14px;
+    width: 55px;
+    padding: 7px 14px;
+    margin: 0;
+    background-color: #BB9EE5;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: none !important;
+}
+
+// 팝업버튼2
+.custom-popup02{
+    width: 300px;
+    padding: 20px 29px;
+    background-color: #fff;
+    border: 1px solid #999;
+    border-radius: 10px;
+}
+.custom-html-container02{
+    padding: 0 !important;
+}
+.custom-text02{
+    font-family: 'S-CoreDream-4Regular';
+    font-size: 14px;
+}
+.custom-confirm-button02{
+    font-family: 'S-CoreDream-4Regular';
+    font-size: 14px;
+    width: 55px;
+    padding: 7px 14px;
+    margin: 0;
+    margin-right: 7px;
+    background-color: #BB9EE5;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: none !important;
+}
+.custom-cencel-button02{
+    font-family: 'S-CoreDream-4Regular';
+    font-size: 14px;
+    width: 55px;
+    padding: 7px 14px;
+    margin: 0;
+    background-color: #fff;
+    color: #555;
+    border: 1px solid #BB9EE5;
+    border-radius: 5px;
+    box-shadow: none !important;
+}
+.swal2-actions{
+    display: flex !important;
+    justify-content: flex-end !important;
+    width: 100%;
+}
+
+// 결제와 주문내역페이지에 필요한 상품아이템
+.payproductitem{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border: 1px solid #999;
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 10px;
+    .productitem-img{
+        width: 130px; height: 130px;
+        margin-right: 10px;
+        >img{width: 100%;}
+    }
+    .productitem-text{
+        >b{ display: block; }
+        >span{
+            display: block;
+            font-size: 14px;
+            margin: 7px 0;
+        }
+        >p{ font-family: 'S-CoreDream-5Medium'; }
+    }
+}

@@ -1,0 +1,15 @@
+.paydone-close{
+    width: 14px; height: 14px;
+    padding-top: 30px;
+    >img{width: 100%;}
+}
+
+.paydone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+    >.btnshort-line{
+        margin-right: 10px;
+    }
+}
