@@ -23,16 +23,18 @@ import MenuBar from './component/_common/MenuBar';
 import InquiryWrite from './pages/07-mypage/InquiryWrite';
 
 function App() {
-  // // 렌더링 전에 splash로 보낼지 판단
-  // const pathname = window.location.pathname;
-  // const isFirstVisit = !localStorage.getItem("visited");
-  // const isRoot = pathname === "/";
+  // 렌더링 전에 splash로 보낼지 판단
+  const pathname = window.location.pathname;
+  const isRoot = pathname === "/";
+  const today = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+  const lastVisit = localStorage.getItem("visited");
+  const inNewDay = lastVisit != today;
 
-  // if (isFirstVisit && isRoot) {
-  //   localStorage.setItem("visited", "true");
-  //   window.location.replace("/splash");
-  //   return null; 
-  // }
+  if (isRoot && inNewDay) {
+    localStorage.setItem("visited", today);
+    window.location.replace("/splash");
+    return null; 
+  }
 
   return (
     <Router>

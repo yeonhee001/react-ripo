@@ -1,2 +1,43 @@
-.mypage-item{}
-.mypage-label{font-family: 'S-CoreDream-5Medium';}
+
+.my-user{
+  padding: 32px 0 50px;
+  .my-user-name{
+    font-family: 'S-CoreDream-5Medium';
+    font-size: 20px;
+    color: #BB9EE5;
+    padding-bottom: 5px;
+  }
+  .my-user-id{
+    font-family: 'S-CoreDream-3Light';
+    font-size: 12px;
+    color: #999;
+  }
+}
+
+.mypage-ctgr{
+  padding-bottom: 50px;
+  .mypage-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    cursor: pointer;
+    .mypage-label{font-family: 'S-CoreDream-5Medium';}
+    >span{
+      .mypage-right{
+        width: 7px; height: 14px;
+        >img{ width: 100%; padding-bottom: 11px;}
+      }
+    }
+    &:nth-of-type(2){padding-bottom: 50px;}
+    &:nth-of-type(5){padding-bottom: 0;}
+  }
+}
+
+.my-logout{
+  cursor: pointer;
+  >p{
+    font-size: 12px;
+    color: #999;
+  }
+}

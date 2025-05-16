@@ -1,0 +1,16 @@
+.login-top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .login-logo{
+        margin-top: 103px;
+        width: 114px; height: 55px;
+        >img{
+            width: 100%;
+        }
+    }
+    .login-slogan{
+        text-align: center;
+        padding: 10px 0 90px;
+    }
+}
