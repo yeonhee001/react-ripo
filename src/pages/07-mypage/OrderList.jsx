@@ -1,5 +1,8 @@
 import React from 'react'
-import PayDoneBar from '../../component/06-pay/PayDoneBar'
+import PayDoneBar from '../../component/_common/PayDoneBar'
+import PayProductItem from '../../component/_common/PayProductItem';
+import InfoMessage from '../../component/_common/InfoMessage';
+import '../../styles/07-mypage/orderList.scss';
 
 function OrderList() {
 
@@ -20,7 +23,12 @@ function OrderList() {
 
   return (
     <div>
-      <PayDoneBar className={'paydone-top'} titleClassName={'paydone-title'} dayClassName={'paydone-day'} title={'결제완료'} day={days(now)}/>
+      <h2 className='order-toptitle'>주문내역</h2>
+
+      <PayDoneBar className={'order-top'} titleClassName={'order-title'} dayClassName={'order-day'} title={'결제완료'} day={days(now)}/>
+      <PayProductItem img={'/imgs/기록01_다이어리03.jpg'} title={'2025 볼펜 세트'} num={'1'} price={'11,800'}/>
+
+      <InfoMessage type={'noorder'}/>
     </div>
   )
 }
