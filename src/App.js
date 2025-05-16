@@ -17,22 +17,24 @@ import Notice from './pages/07-mypage/Notice';
 import OrderList from './pages/07-mypage/OrderList';
 import Login from './pages/00-login/Login';
 import Signup from './pages/00-login/Signup';
-import './styles/_style.scss';
 import Header from './component/_common/Header';
 import MenuBar from './component/_common/MenuBar';
 import InquiryWrite from './pages/07-mypage/InquiryWrite';
+import './styles/_style.scss';
 
 function App() {
-  // // 렌더링 전에 splash로 보낼지 판단
-  // const pathname = window.location.pathname;
-  // const isFirstVisit = !localStorage.getItem("visited");
-  // const isRoot = pathname === "/";
+  // 렌더링 전에 splash로 보낼지 판단
+  const pathname = window.location.pathname;
+  const isRoot = pathname === "/";
+  const today = new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+  const lastVisit = localStorage.getItem("visited");
+  const inNewDay = lastVisit != today;
 
-  // if (isFirstVisit && isRoot) {
-  //   localStorage.setItem("visited", "true");
-  //   window.location.replace("/splash");
-  //   return null; 
-  // }
+  if (isRoot && inNewDay) {
+    localStorage.setItem("visited", today);
+    window.location.replace("/splash");
+    return null; 
+  }
 
   return (
     <Router>
@@ -48,8 +50,8 @@ function App() {
 
           <Route path='/category' element={<Category/>}/>
 
-          <Route path='/product' element={<ProductList/>}/>
-          <Route path='/product/productdetail/:id' element={<ProductDetail/>}/>
+          <Route path='/product:type' element={<ProductList/>}/>
+          <Route path='/product:type/productdetail/:id' element={<ProductDetail/>}/>
 
           <Route path='/cart' element={<CartList/>}/>
 

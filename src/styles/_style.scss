@@ -52,19 +52,21 @@ input, textarea{
 .btnlong{
     background-color: #EEE9FF;
     width: 100%;
-    padding: 16px 142px;
+    padding: 16px;
     border-radius: 10px;
+    cursor: pointer;
     .btnlong-label{
         font-family: 'S-CoreDream-5Medium';
         font-size: 14px;
         color: #555;
         text-align: center;
     }
-}
-.btnlong.active{
-    background-color: #C9B6E4;
-    .btnlong-label{
-        color: #fff;
+    &.active{
+        background-color: #C9B6E4;
+        // cursor: pointer;
+        .btnlong-label{
+            color: #fff;
+        }
     }
 }
 
@@ -74,6 +76,7 @@ input, textarea{
     border: 1px solid #C9B6E4;
     border-radius: 10px;
     padding: 16px 24px;
+    cursor: pointer;
     >p{
         font-family: 'S-CoreDream-5Medium';
         font-size: 14px;
@@ -86,6 +89,7 @@ input, textarea{
     background-color: #C9B6E4;
     border-radius: 10px;
     padding: 16px 24px;
+    cursor: pointer;
     >p{
         font-family: 'S-CoreDream-5Medium';
         font-size: 14px;
@@ -227,7 +231,10 @@ input, textarea{
     .productitem-img{
         width: 130px; height: 130px;
         margin-right: 10px;
-        >img{width: 100%;}
+        >img{
+            width: 100%;
+            border-radius: 10px;
+        }
     }
     .productitem-text{
         >b{ display: block; }
@@ -251,17 +258,18 @@ input, textarea{
 // 카드
 .cardlist{
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-direction: row;
-    margin-bottom: 50px;
+    .swiper-slide{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: row;
+    }
     .trip-main-slideitem{
         margin-right: 10px;
     }
 }
 .carditem{
-    width: 35% !important;
+    height: auto;
     img{
         width: 100%; height: 100%;
         border-radius: 10px;
@@ -327,6 +335,70 @@ input, textarea{
                 overflow: hidden;
                 text-overflow: ellipsis;
             }
+        }
+    }
+}
+
+// 아코디언 (1:1문의, 자주묻는질문, 공지사항)
+.accordion-msg {
+    span {color: #C9B6E4; font-family: 'S-CoreDream-5Medium';}
+    font-size: 12px;
+    font-family: 'S-CoreDream-3Light';
+}
+.accordion-container {
+    .accordion-item {
+        .accordion-item-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin: 20px 0;
+            gap: 10px;
+
+            .accordion-item-title{
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            span{
+                font-size: 12px;
+                &:first-of-type{
+                    color: #9257E9;
+                    font-family: 'S-CoreDream-5Medium';
+                }
+                &:last-of-type{
+                    color: #999;
+                    font-family: 'S-CoreDream-3Light';
+                }
+            }
+    
+            .accordionicon {
+                display: flex;
+                align-items: center;
+                .icon {
+                    width: 18px;
+                    height: 18px;
+                    margin-left:15px;
+                }
+            }
+            .circleicon{}
+        }
+    }
+
+    .accordion-item-content {
+        background-color: rgba($color: #EEE9FF, $alpha: 0.6);
+        padding: 18px;
+        font-size: 14px;
+        font-family: 'S-CoreDream-3Light';
+        border-radius: 10px;
+        margin-top: -4px;
+        white-space: pre-line;
+        span{font-size: 20px; font-family: 'S-CoreDream-5Medium';}
+        .accordion-item-answer{
+            margin-top: 36px;
+            span{color: #999;}
         }
     }
 }

@@ -4,14 +4,16 @@ function PayForm({className, label, name, type="text", value, onChange, placehol
   return (
     <div className={className}>
       <p>{label}</p>
-      <input 
-        id={name}
-        name={name}
-        type={type}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
+      {(name || onChange || value || placeholder) && (
+        <input 
+          id={name}
+          name={name}
+          type={type}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+        />
+      )}
     </div>
   )
 }

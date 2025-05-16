@@ -11,6 +11,8 @@ function Header() {
   function handleCloseIcon() {
     if(pathname==='/pay/done') {
       navigate('/')
+    } else if(pathname==='/my/orderlist'){
+      navigate('/my')
     } else {
       navigate(-1)
     }
@@ -19,7 +21,7 @@ function Header() {
   let head;
   if(pathname==='/'){ 
     head = <img src='/imgs/logo.svg' alt=''/>;
-  } else if (pathname==='/search' || pathname==='/category' || pathname==='/cart' || pathname==='/my') {
+  } else if (pathname==='/search' || pathname==='/category' || pathname==='/cart' || pathname==='/my' || pathname==='/splash') {
     head = "";
   }else if (pathname==='/my/inquiry/write' || pathname==='/pay/done' || pathname==='/my/orderlist') {
     head = <CloseIcon className={'closeicon'} onClick={handleCloseIcon}/>;

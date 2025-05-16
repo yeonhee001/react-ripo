@@ -41,6 +41,6 @@ function BtnShort({className, lineType, fillType, lineTo, fillTo}) {
   )
 }
 
-// 사용방법 : <BtnShort fillType={"quest"} fillTo={"/my/faq"}/>
+// 사용방법 : <BtnShort className={className} fillType={"quest"} fillTo={"/my/faq"}/>
 
 export default BtnShort
