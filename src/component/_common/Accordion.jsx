@@ -1,57 +1,55 @@
-import React, { useState } from 'react'
+import React from 'react'
 import UpIcon from '../icons/UpIcon';
 import DownIcon from '../icons/DownIcon';
+import CircleWhite from '../icons/CircleWhite';
+import CirclePurple from '../icons/CirclePurple';
 
-function Accordion() {
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const handleAccordion = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+function Accordion({ index, data, openIndex, setOpenIndex }) {
+  const isOpen = openIndex === index;
+  
+  const handleAccordion = () => {
+    setOpenIndex(isOpen ? null : index);
   };
 
-  const testdata = [
-    {
-      tag: '상품문의',
-      content: '혹시 재입고 예정 있나요? ㅠㅠ',
-      date: '2025.05.10'
-    },
-    {
-      tag: '기타문의',
-      content: '먼슬리-위클리-먼슬리-위클리 가 반복되는 구조인가요?',
-      date: '2025.05.14'
-    },
-    {
-      title: '상품을 주문 하려면 어떻게 하나요?',
-      content: '1. 로그인 후 구매하실 상품을 선택하여 장바구니 버튼을 클릭합니다.',
-    },
-  ]
-
   return (
-    <div>
-      {testdata.map((item, index) => (
-        <div
-          key={index}
-          className={`qna-item ${openIndex === index ? 'open' : ''}`}
-        >
-          <div
-            className="question"
-            onClick={() => handleAccordion(index)}
-          >
-            {item.tag && (<span>{item.tag}</span>)}
-            <p>{item.title ? item.title : item.content}</p>
-            {item.date && (<span>{item.date}</span>)}
-            <div className={`arrow-icon ${openIndex === index ? 'active' : ''}`}>
-              {openIndex === index ? <UpIcon className="icon" /> : <DownIcon className="icon" />}
-            </div>
-          </div>
-          {openIndex === index && (
-            <div className="qna-answer">
-              <p dangerouslySetInnerHTML={{ __html: item.content }} />
-            </div>
-          )}
-          {index < testdata.length - 1 && <hr />}
+    <div
+      className={`accordion-item ${isOpen ? 'open' : ''}`}
+    >
+      <div className="accordion-item-info" onClick={handleAccordion}>
+        <div>
+          {data.tag && (<span>{data.tag}</span>)}
+          <p className={`accordion-item-title${data.tag ? '' : '-inmy'}`}>
+            {data.noticeType && (<span>{data.noticeType}</span>)}{data.title ? data.title : data.content}
+          </p>
+          {data.date && (<span>{data.date}</span>)}
         </div>
-      ))}
+        {
+          data.tag ? (
+            data.answer ? <CirclePurple className={'circleicon'}/> : <CircleWhite className={'circleicon'}/>
+          ) : (
+            <div className={`updown-icon ${isOpen ? 'active' : ''}`}>
+              {isOpen ? <UpIcon className="accordionicon" /> : <DownIcon className="accordionicon" />}
+            </div>
+          )
+        }
+      </div>
+
+      {isOpen && (
+        <div className="accordion-item-content">
+          { data.tag ? (
+            <p>
+              <span>Q.</span> <br /> {data.content} <br />
+            </p>
+          ) : (
+            <p>{data.content}</p>
+          )}
+          { data.answer && (
+            <p className='accordion-item-answer'>
+              <span>A.</span> <br /> {data.answer} <br />
+            </p>
+          )}
+        </div>
+      )}
     </div>
   )
 }

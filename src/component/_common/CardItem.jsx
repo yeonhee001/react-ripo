@@ -7,10 +7,12 @@ function CardItem({imgurl, name, price, id}) {
     navigate(`/product/productdetail/${id}`);
   }
 
+  const firstImg = imgurl.split(',')[0];
+
   return (
     <>
       <figure onClick={goToDetailPage}>
-        <img src={imgurl} alt="img" />
+        <img src={`http://localhost/admin/product/upload/${firstImg}`} alt="img" />
         <figcaption>
           <p>{name}</p>
           <span>{Number(price).toLocaleString()}</span>
