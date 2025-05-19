@@ -48,14 +48,6 @@ function Faq() {
                 1. 마이리포 메뉴 선택
                 2. 마이리포 하단에 보면 로그아웃 선택`,
     },
-    {
-      title: '상품 문의는 어떻게 작성하나요?',
-      content: `문의하는 상품의 [상세페이지 → 문의 탭] 선택하여 작성할 수 있습니다.
-                문의하신 내용은 [마이페이지 → 1:1 문의]에서 확인하실 수 있습니다.
-                
-                *재입고, 배송 등 상품과 관련된 문의를 할 수 있습니다.
-                *상품과 관련 없는 욕설, 비방, 회원간 거래 글, 명예훼손, 타 쇼핑몰 언급, 허위사실 유포, 광고성 등의 문의는 숨김 처리 됩니다.`,
-    },
   ]
 
   return (
@@ -68,6 +60,7 @@ function Faq() {
               key={index}
               index={index}
               data={item}
+              list={faqData}
               openIndex={openIndex}
               setOpenIndex={setOpenIndex}/>
           ))

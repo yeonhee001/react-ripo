@@ -1,0 +1,65 @@
+.category{
+    padding-bottom: 135px;
+
+    .category-title{margin-bottom: 12px;}
+    .category-box{
+        hr{
+            border: none;
+            background-color: #f3f3f3;
+            height: 5px;
+            width: 100vw;
+            max-width: 480px;
+            margin-left: -18px;
+        }
+        .category-parent{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 20px 0;
+            position: relative;
+            .category-recicon{
+                width: 24px; height: 24px;
+                > img{width: 100%; height: 100%; object-fit: contain;}
+            }
+            p{
+                font-size: 20px;
+                font-family: 'S-CoreDream-5Medium';
+                color: #9257E9;
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                left: 0; bottom: 0;
+                border: 1px solid #f3f3f3;
+            }
+        }
+        .category-sub{
+            position: relative;
+            // category-box 안 두번째 div(첫번째 sub)
+            &:nth-of-type(2)::after{
+                content: '';
+                position: absolute;
+                width: 100%;
+                left: 0; bottom: 0;
+                border: 1px solid #f3f3f3;
+            }
+            .category-sub-txt{
+                font-family: 'S-CoreDream-5Medium';
+                padding: 16px 0;
+            }
+            .category-item{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 16px;
+                cursor: pointer;
+                .category-item-txt{}
+                .category-item-icon{
+                    width: 8px; height: 15px;
+                    > img{width: 100%; height: 100%; object-fit: contain;}
+                }
+            }
+        }
+    }
+}

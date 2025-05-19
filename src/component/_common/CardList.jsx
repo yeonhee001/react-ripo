@@ -8,7 +8,7 @@ import "swiper/css";
 import 'swiper/css/free-mode';
 import 'swiper/css/grid';
 
-function CardList({ data, rows = 1, slidesPerView = 'auto' }) {
+function CardList({ data, type, rows = 1, slidesPerView = 'auto' }) {
 
   return (
     <Swiper className='cardlist'
@@ -21,6 +21,7 @@ function CardList({ data, rows = 1, slidesPerView = 'auto' }) {
         data.map((item, i) => (
           <SwiperSlide className='carditem' key={i}>
             <CardItem 
+              type={type[i]}
               imgurl={item?.p_thumb} name={item?.p_name} price={item?.p_price} id={item?.id}
             />
           </SwiperSlide>

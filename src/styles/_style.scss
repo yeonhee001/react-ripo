@@ -255,7 +255,14 @@ input, textarea{
 
 // 헤더
 .header{
-    width: 80px; padding: 30px 0; 
+    width: 80px; padding: 30px 0;
+
+    &.absolute{
+        position: absolute;
+        top: 0;
+        z-index: 10;
+    }
+    
     .closeicon{width: 14px; height: 14px; cursor: pointer;}
     .backicon{width: 14px; height: 14px; cursor: pointer;}
     img{width: 100%;}
@@ -276,81 +283,28 @@ input, textarea{
 }
 .carditem{
     height: auto;
+    cursor: pointer;
     img{
         width: 100%; height: 100%;
         border-radius: 10px;
     }
     figcaption{
-        p{margin: 10px 0 7px;}
+        p{
+            margin: 10px 0 7px;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            word-break: break-word; /* 긴 단어도 줄 바꿈 시도 */
+            overflow-wrap: break-word; /* 최신 권장 */
+        }
         span{font-family: 'S-CoreDream-5Medium'; font-size: 20px;}
     }
 }
 
-// 탭
-.tabmenu{
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    text-align: center;
-    color: #999;
-    font-family: 'S-CoreDream-3Light';
-    > div{
-        width: 50%;
-        padding: 16px 0;
-        margin-bottom: 16px;
-        border-bottom: 1px solid #EEE9FF;
-        border-radius: 10px 10px 0 0;
-        cursor: pointer;
-        &.active{
-            background-color: #C9B6E4;
-            color: white;
-            font-family: 'S-CoreDream-5Medium';
-            border-bottom: 1px solid #C9B6E4;
-        }
-    }
-}
-
-// 1:1문의 - 상품 정보
-.InquiryProductItem{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    .InquiryProductItem-img{
-        width: 20%;
-        aspect-ratio: 1 / 1;   // 가로/세로 비율 1:1
-        > img{
-            width: 100%; height: 100%;
-            border-radius: 10px;
-        }
-    }
-    .InquiryProductItem-right{
-        width: 80%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .InquiryProductItem-text{
-            span{
-                font-size: 12px;
-                font-family: 'S-CoreDream-3Light';
-                &:first-of-type{color: #999;}
-            }
-            p{
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-                display: -webkit-box;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-        }
-    }
-}
-
-// 아코디언 (1:1문의, 자주묻는질문, 공지사항)
-.accordion-msg {
-    span {color: #C9B6E4; font-family: 'S-CoreDream-5Medium';}
-    font-size: 12px;
-    font-family: 'S-CoreDream-3Light';
-}
+// 아코디언 (자주묻는질문, 공지사항)
 .accordion-container {
     .accordion-item {
         .accordion-item-info {
@@ -361,13 +315,6 @@ input, textarea{
             margin: 20px 0;
             gap: 10px;
 
-            .accordion-item-title{
-                -webkit-line-clamp: 1;
-                -webkit-box-orient: vertical;
-                display: -webkit-box;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
             span{
                 font-size: 12px;
                 &:first-of-type{
@@ -379,7 +326,6 @@ input, textarea{
                     font-family: 'S-CoreDream-3Light';
                 }
             }
-    
             .accordionicon {
                 display: flex;
                 align-items: center;
@@ -389,7 +335,11 @@ input, textarea{
                     margin-left:15px;
                 }
             }
-            .circleicon{}
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #EEE9FF;
+            margin: 0;
         }
     }
 
@@ -400,11 +350,7 @@ input, textarea{
         font-family: 'S-CoreDream-3Light';
         border-radius: 10px;
         margin-top: -4px;
+        margin-bottom: 20px;
         white-space: pre-line;
-        span{font-size: 20px; font-family: 'S-CoreDream-5Medium';}
-        .accordion-item-answer{
-            margin-top: 36px;
-            span{color: #999;}
-        }
     }
 }

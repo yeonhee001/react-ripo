@@ -10,6 +10,9 @@ function BtnShort({className, lineType, fillType, lineTo, fillTo}) {
   const line = {
     order: {
       txt: '주문상세 보기'
+    },
+    quest: {
+      txt: '자주묻는질문'
     }
   }
   const fill = {
@@ -17,7 +20,7 @@ function BtnShort({className, lineType, fillType, lineTo, fillTo}) {
       txt: '계속 쇼핑하기'
     },
     quest: {
-      txt: '문의하러 가기'
+      txt: '전화하러 가기'
     },
     eyeshop: {
       txt: '구경하러 가기'
