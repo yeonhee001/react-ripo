@@ -9,9 +9,9 @@ function TabMenu({ type, onTabChange, selectedTab }) {
     product: {
       title: ['상세정보', '문의']
     },
-    inquiry: {
-      title: ['문의하기', '문의내역']
-    }
+    // inquiry: {
+    //   title: ['문의하기', '문의내역']
+    // }
   }
     
   useEffect(() => {

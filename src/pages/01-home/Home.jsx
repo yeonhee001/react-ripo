@@ -11,80 +11,67 @@ import '../../styles/01-home/home.scss'
 
 function Home() {
   const [allItem, setAllItem] = useState([]);
-  const [ctgr, setCtgr] = useState([]);
+  const [mainctgrName, setMainCtgrName] = useState([]);
+  const [newCtgrName, setNewCtgrName] = useState([]);
   const [mainSlideItem, setMainSlideItem] = useState(null);
 
-  const testMainSlideData = [
-    {
-      id: 1,
-      imgurl: '/imgs/기록01_다이어리03.jpg',
-      product: '썸네일 인덱스잇',
-      itemcategory: '메모지' 
-    },
-    {
-      id: 2,
-      imgurl: '/imgs/기록01_다이어리03.jpg',
-      product: '썸네일 인덱스잇',
-      itemcategory: '메모지' 
-    },
-    {
-      id: 3,
-      imgurl: '/imgs/기록01_다이어리03.jpg',
-      product: '썸네일 인덱스잇',
-      itemcategory: '메모지' 
-    },
-    {
-      id: 4,
-      imgurl: '/imgs/기록01_다이어리03.jpg',
-      product: '썸네일 인덱스잇',
-      itemcategory: '메모지' 
-    }
-  ]
+  const [newSlideItem, setNewSlideItem] = useState([]);
 
   const category = [
     {
         imgurl: '/imgs/category01.svg',
         name: '다이어리',
-        type: 'diary'
     },
     {
         imgurl: '/imgs/category02.svg',
         name: '메모지',
-        type: 'memo'
     },
     {
         imgurl: '/imgs/category03.svg',
         name: '스티커',
-        type: 'stiker'
     },
     {
         imgurl: '/imgs/category04.svg',
         name: '샤프',
-        type: 'sharp'
     },
     {
         imgurl: '/imgs/category05.svg',
         name: '볼펜',
-        type: 'pen'
     }
   ]
 
+  // 모든 상품 데이터 가져오기
   useEffect(()=>{
     axios.get('http://localhost/admin/api/p_list.php')
     .then(res=>{
+      const newItem01 = res.data.slice(-4);
+      const newItem02 = res.data.slice(-8, -4);
+      setNewSlideItem([...newItem01, ...newItem02]);
+
       setAllItem(res.data)
     })
   },[])
 
+  // 모든 카테고리 가져와 홈에 표시되는 데이터의 카테고리 id값과 일치하는 카테고리의 name 가져오기
   useEffect(()=>{
-    axios.get('http://localhost/admin/api/category.php')
-    .then(res=>{
-      setCtgr(res.data)
-    })
-  },[])
+    if (mainSlideItem === null) return;
 
-  console.log(ctgr);
-  
+    axios.get('http://localhost/admin/api/category.php')
+    .then(res => {
+      // 메인 슬라이드
+      const matchedCategories = mainSlideItem.map(item => {
+        return res.data.find(ctgr => String(ctgr.id) === String(item.cat_id));
+      });
+      setMainCtgrName(matchedCategories.map(ctgr => ctgr?.cat_name ?? ''));
+
+      // 신상품
+      const matchedCategories2 = newSlideItem.map(item => {
+        return res.data.find(ctgr => String(ctgr.id) === String(item.cat_id));
+      });
+      setNewCtgrName(matchedCategories2.map(ctgr => ctgr?.cat_name ?? ''))
+    })
+    .catch(e => console.error('카테고리 데이터 불러오기 실패', e));
+}, [mainSlideItem]);
 
   // 메인슬라이드 로컬스토리지 저장, 하루시간 설정 후 삭제되게 함
   useEffect(()=>{
@@ -119,33 +106,27 @@ function Home() {
         setMainSlideItem(sliceHome); // 랜덤으로 고른걸 메인슬라이드 이미지로 선택
         const createdAt = new Date().getTime(); //현재 시각ms
         localStorage.setItem('ripo-main', JSON.stringify({main: sliceHome, createdAt})); // sliceFood, mainFoodPick은 배열이니까 쿠키에 직접 저장이 되지 않아 문자열로 변경하여 저장
-        console.log(sliceHome);
     }
 
   }, [allItem]);
-
-  const newItem01 = allItem?.slice(-4);
-  const newItem02 = allItem?.slice(-8, -4);
   
-
   return (
     <div className='home'>
       <Swiper className='mainSlide'
-      modules={[Autoplay, Pagination]}
-      slidesPerView={'auto'}
-      autoplay={{
-        delay: 4000,
-        disableOnInteraction: false,
-      }}
-      pagination={{ clickable: true }}
-      spaceBetween={0}
-      loop={true}
-      >
+        modules={[Autoplay, Pagination]}
+        slidesPerView={'auto'}
+        autoplay={{
+          delay: 4000,
+          disableOnInteraction: false,
+        }}
+        pagination={{ clickable: true }}
+        spaceBetween={0}
+        loop={mainSlideItem?.length > 3}>
         {
           mainSlideItem?.map((item, i) => (
             <SwiperSlide key={i}>
               <HomeSlide
-                imgurl={item?.p_thumb} name={item?.p_name} category={item?.itemcategory} id={item?.id}
+                imgurl={item?.p_thumb} name={item?.p_name} type={mainctgrName[i]} id={item?.id}
               />
             </SwiperSlide>
           ))
@@ -153,9 +134,8 @@ function Home() {
       </Swiper>
 
       <Swiper className='categorySlide'
-      slidesPerView={'auto'}
-      spaceBetween={16}
-      >
+        slidesPerView={'auto'}
+        spaceBetween={16}>
         {
           category.map((item, i) => (
             <SwiperSlide key={i}>
@@ -167,7 +147,7 @@ function Home() {
 
       <div className='home-item-box'>
         <p className='home-item-box-title'>🆕 새로 나왔어요!</p>
-        <CardList data={[...newItem01, ...newItem02]} rows={2} slidesPerView={2.6}/>
+        <CardList data={newSlideItem} type={newCtgrName} rows={2} slidesPerView={2.6}/>
       </div>
 
       <div className='footer'>

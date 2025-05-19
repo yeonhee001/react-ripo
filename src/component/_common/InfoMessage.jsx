@@ -33,9 +33,10 @@ function InfoMessage({type}) {
     },
     detailfaq: {
       icon: <ProductIcon className={'onproduct'}/>,
-      txt: `상품에 대해 궁금한 점이 있다면,
-            리포가 도와드릴게요!`,
-      subtxt: '답변은 마이페이지>1:1 문의에서 확인할 수 있어요'
+      txt: `궁금한 점이 있으신가요?
+            리포가 전화로 친절하게 도와드릴게요!`,
+      subtxt: `[마이페이지 > 전화걸기] 에서 바로 연결할 수 있어요.  
+               자주 묻는 질문도 참고해보세요.`
     }
   }
   return (

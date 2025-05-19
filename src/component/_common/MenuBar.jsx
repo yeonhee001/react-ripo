@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { NavLink, useLocation} from 'react-router-dom';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import { BottomNavigationAction, GlobalStyles } from '@mui/material';
@@ -15,38 +15,32 @@ import MyIconPurple from '../icons/MyIconPurple';
 
 function MenuBar() {
   const location = useLocation();
-  const [value, setValue] = React.useState(location.pathname);   // 최초 값: 현재 경로
 
-  const hiddenPaths = ["/splash", "/pay", "/pay/done", "/my/inquiry/write", "/signup"];
   // location이 pathname을 가지고 있어서 안보이게 할 페이지를 지정. 파라미터는 감지하지 못해 상품상세페이지는 별도 처리.
-  const hideMenu = hiddenPaths.includes(location.pathname) || location.pathname.includes("/product/productdetail");
-  
-  // 경로 바뀔 때마다 탭 상태 동기화
-  useEffect(()=>{
-    setValue(location.pathname);
-  },[location.pathname]);
+  const hiddenPaths = ["/splash", "/pay", "/pay/done", "/signup"];
+  const pathSegments = location.pathname.split('/');
+  // ['', 'product', 'type', 'id'] → 길이 4
+  const isProductDetail = pathSegments[1] === 'product' && pathSegments.length === 4;
+  const hideMenu = hiddenPaths.includes(location.pathname) || isProductDetail
+
 
   if (hideMenu) return null; // 해당 경로가 true일 때 렌더링 X
 
   // mui가 value 값이 정확히 일치할 때만 selected 상태로 파악하여 경로를 맞춰줌.
   // selected 상태일 때만 폰트 컬러가 들어가기 때문에 설정 필요.
-  let navValue = '/';
-  if (location.pathname.includes('/my')) {
-    navValue = '/my';
+  // 아래 경우가 아닌 경우는 value=null이므로 non-selected 상태.
+  let navValue = null;
+  if (location.pathname === '/') {
+    navValue = '/';
   } else if (location.pathname.includes('/search')) {
     navValue = '/search';
   } else if (location.pathname.includes('/category')) {
     navValue = '/category';
   } else if (location.pathname.includes('/cart')) {
     navValue = '/cart';
-  } else if (location.pathname === '/') {
-    navValue = '/';
+  } else if (location.pathname.includes('/my')) {
+    navValue = '/my';
   }
-
-  // 클릭 시 탭 상태 업데이트
-  function handleChange(event, newValue) {
-    setValue(newValue);
-  };
 
   return (
     <>
@@ -86,7 +80,6 @@ function MenuBar() {
           zIndex: 9999
         }}
         value={navValue}
-        onChange={handleChange}
         showLabels
       >
         <BottomNavigationAction

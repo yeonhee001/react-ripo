@@ -12,14 +12,12 @@ import Pay from './pages/06-pay/Pay';
 import PayDone from './pages/06-pay/PayDone';
 import My from './pages/07-mypage/My';
 import Faq from './pages/07-mypage/Faq';
-import Inquiry from './pages/07-mypage/Inquiry';
 import Notice from './pages/07-mypage/Notice';
 import OrderList from './pages/07-mypage/OrderList';
 import Login from './pages/00-login/Login';
 import Signup from './pages/00-login/Signup';
 import Header from './component/_common/Header';
 import MenuBar from './component/_common/MenuBar';
-import InquiryWrite from './pages/07-mypage/InquiryWrite';
 import './styles/_style.scss';
 
 function App() {
@@ -50,8 +48,8 @@ function App() {
 
           <Route path='/category' element={<Category/>}/>
 
-          <Route path='/product:type' element={<ProductList/>}/>
-          <Route path='/product:type/productdetail/:id' element={<ProductDetail/>}/>
+          <Route path='/product/:type' element={<ProductList/>}/>
+          <Route path='/product/:type/:id' element={<ProductDetail/>}/>
 
           <Route path='/cart' element={<CartList/>}/>
 
@@ -60,8 +58,6 @@ function App() {
 
           <Route path='/my' element={<My/>}/>
           <Route path='/my/faq' element={<Faq/>}/>
-          <Route path='/my/inquiry' element={<Inquiry/>}/>
-          <Route path='/my/inquiry/write' element={<InquiryWrite/>}/>
           <Route path='/my/notice' element={<Notice/>}/>
           <Route path='/my/orderlist' element={<OrderList/>}/>
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function CardItem({imgurl, name, price, id}) {
+function CardItem({ type, imgurl, name, price, id }) {
   const navigate = useNavigate();
   function goToDetailPage() {
-    navigate(`/product/productdetail/${id}`);
+    navigate(`/product/${type}/${id}`);
   }
 
   const firstImg = imgurl.split(',')[0];
