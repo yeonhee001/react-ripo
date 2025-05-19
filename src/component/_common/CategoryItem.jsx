@@ -2,10 +2,11 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import RightIcon from '../icons/RightIcon'
 
-function CategoryItem({className, goto, textClassName, label, iconclassName}) {
+function CategoryItem({className, goto, textClassName, label, iconclassName, onClick}) {
   
   const navi = useNavigate();
   const ctgrClick = (to)=>{
+    if(onClick) onClick();
     if(to) navi(to);
   }
 

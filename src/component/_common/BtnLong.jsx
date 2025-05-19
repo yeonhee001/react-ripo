@@ -1,20 +1,14 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 
-function BtnLong({className, label, isActive=false, goto}) {
-
-  const navi = useNavigate();
-  const btnLClick = (to)=>{
-    if(to) navi(to);
-  }
+function BtnLong({className, label, isActive=false, onClick, type='button'}) {
 
   return (
-    <div className={`btnlong ${isActive ? 'active' : ''} ${className}`} onClick={()=>btnLClick(goto)}>
+    <button className={`btnlong ${isActive ? 'active' : 'disabled'} ${className}`} onClick={isActive ? onClick : undefined} type={type}>
       <p className='btnlong-label'>{label}</p>
-    </div> 
+    </button> 
   )
 }
 
-// 사용방법 : <BtnLong label={'사용할 버튼 이름'} isActive={text.trim().length > 0} goto={"이동경로"}/>
+// 사용방법 : <BtnLong className={'signup-btn'} label={'회원가입'} isActive={jointext4.trim().length>0 && agreeOption1===true} onClick={()=>{signupClick();}} type={'submit'}/>
 
 export default BtnLong

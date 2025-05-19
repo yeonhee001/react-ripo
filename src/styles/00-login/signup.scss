@@ -1,0 +1,119 @@
+
+.signup-top{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 46px 0 46px;
+  .signup-slogan{
+    text-align: center;
+    color: #555;
+  }
+  .signup-logo{
+    padding-top: 5px;
+    width: 114px; height: 55px;
+    >img{
+        width: 100%;
+    }
+  }
+}
+
+.signup{
+  .signup-form{
+    margin-bottom: 28px;
+    >p{
+      font-family: 'S-CoreDream-3Light';
+      font-size: 12px;
+      color: #999;
+      padding-top: 10px;
+    }
+  }
+}
+
+.signup-check{
+  margin: 50px 0;
+  color: #555;
+  .signup-all-check{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #d9d9d9;
+    >p{
+      font-family: 'S-CoreDream-5Medium';
+      font-size: 14px;
+      margin: 2px 0 0 10px;
+    }
+  }
+  .signup-each{
+    padding-top: 16px;
+  }
+}
+
+.signup-longbtn{
+  padding-bottom: 65px;
+}
+
+// 약관동의 컴포넌트
+.agreeitem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  .agreeitem-text{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    >p{
+      font-size: 14px;
+      margin: 3px 0 0 10px;
+      border-bottom: 0.5px solid #333;
+    }
+  }
+  >span{
+    font-family: 'S-CoreDream-3Light';
+    font-size: 12px;
+    color: #999;
+    border-bottom: 0.5px solid #999;
+    cursor: pointer;
+  }
+}
+
+// 약관동의내용 팝업 컴포넌트
+.signup-popupall{
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100vh;
+  background-color: rgba(51, 51, 51, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .signup-popupcheck{
+    background-color: #fff;
+    width: 85%;
+    padding: 20px;
+    border-radius: 10px;
+    .signup-popup-txt{
+      >b{
+        display: block;
+        padding: 8px 0 28px;
+        text-align: center;
+      }
+      >p{
+        font-size: 12px;
+        line-height: 20px;
+        white-space: pre-line;
+        padding-bottom: 20px;
+      }
+    }
+    .signup-popup-confirm{
+      border-top: 0.5px solid #999;
+      cursor: pointer;
+      >p{
+        font-family: 'S-CoreDream-5Medium';
+        font-size: 14px;
+        padding-top: 20px;
+        text-align: center;
+      }
+    }
+  }
+}

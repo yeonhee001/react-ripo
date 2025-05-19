@@ -127,7 +127,6 @@ function Home() {
   const newItem01 = allItem?.slice(-4);
   const newItem02 = allItem?.slice(-8, -4);
   
-
   return (
     <div className='home'>
       <Swiper className='mainSlide'
@@ -142,6 +141,7 @@ function Home() {
       loop={true}
       >
         {
+          
           mainSlideItem?.map((item, i) => (
             <SwiperSlide key={i}>
               <HomeSlide

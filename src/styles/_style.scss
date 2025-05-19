@@ -68,6 +68,9 @@ input, textarea{
             color: #fff;
         }
     }
+    &.disabled{
+        pointer-events: none;
+    }
 }
 
 // 공통 짧은 버튼 컴포넌트
@@ -174,6 +177,9 @@ input, textarea{
 }
 
 // 팝업버튼2
+.swal2-backdrop-show{
+    z-index: 10000;
+}
 .custom-popup02{
     width: 300px;
     padding: 20px 29px;

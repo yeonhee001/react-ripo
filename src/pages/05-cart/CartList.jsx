@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import AgreeCheck from '../../component/_common/AgreeCheck';
 import CartItem from '../../component/05-cart/CartItem';
 import PayDoneBar from '../../component/_common/PayDoneBar';
@@ -10,6 +11,27 @@ import BtnShort from '../../component/_common/BtnShort';
 import '../../styles/05-cart/cart.scss';
 
 function CartList() {
+  const [addList, setAddList] = useState([]);
+  const [cartList, setCartList] = useState([]);
+
+  useEffect(()=>{
+    const memId = sessionStorage.getItem('mem_id');
+    if(!memId) return;
+    
+    axios.get(`http://localhost/admin/api/cart.php?mem_id=${memId}`)
+    .then(res=>{
+      setCartList(res.data);
+    })
+  },[])
+
+  useEffect(()=>{
+    axios.get('http://localhost/admin/api/p_list.php')
+    .then(res=>{
+      setAddList(res.data);
+    })
+  },[])
+  const productList = addList.slice(-8);
+
   return (
     <>
       <h2 className='cartlist-toptitle'>장바구니</h2>
@@ -22,11 +44,13 @@ function CartList() {
         <p className='cart-del'>선택삭제</p>
       </div>
 
-      <CartItem  img={'/imgs/기록01_다이어리03.jpg'} title={'스티커'} num={'1'} price={'7,800'}/>
+      {cartList.map(item=>(
+        <CartItem key={item.id} imgurl={item.p_thumb} title={item.p_name} num={item.p_ea} price={item.p_price}/>
+      ))}
 
       <div className='cart-addproduct'>
         <PayDoneBar className={'cart-mid-title'} titleClassName={'cart-title'} title={'함께 구매하면 좋을 상품'}/>
-        {/* <CardList/> */}
+        <CardList data={productList} rows={1} slidesPerView={2.2}/>
       </div>
 
       <div className='cart-productprice'>

@@ -5,12 +5,12 @@ import TextField from '@mui/material/TextField';
 function LoginForm({id, label, type, autoComplete, value, onChange}) {
   return (
     <Box
-      component="form"
+      component="div"
       sx={{ '& .MuiTextField-root': { } }}
       noValidate
       autoComplete="off"
     >
-      <div>
+      <div className='login-textfield'>
         <TextField
           id={id}
           label={label}
@@ -19,15 +19,21 @@ function LoginForm({id, label, type, autoComplete, value, onChange}) {
           value={value}
           onChange={onChange}
           variant="standard"
+          
           sx={{
             width: '100%',
-            marginBottom: '32px',
             '& label.Mui-focused': {
-              color: '#999', // 포커스 시 라벨 색상
+              color: '#555', // 포커스 시 라벨 색상
             },
             '& .MuiInput-underline:after': {
-              borderBottomColor: '#999', // 포커스 시 밑줄 색상
+              borderBottomColor: '#555', // 포커스 시 밑줄 색상
+              borderBottomWidth: '1.5px', // 포커스 시 두께
             },
+            '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+              borderBottomColor: '#999',
+              borderBottomWidth: '2px', // 호버 시 두께
+            },
+            '& .css-1yrc8ca-MuiInputBase-input-MuiInput-input' : { color: '#333', fontSize: '16px', fontFamily: 'S-CoreDream-4Regular'}
           }}
         />
       </div>

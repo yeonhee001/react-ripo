@@ -3,7 +3,7 @@ import Checkbox from '@mui/material/Checkbox';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import SvgIcon from '@mui/material/SvgIcon';
 
-function AgreeCheck({className}) {
+function AgreeCheck({className, checked, onChange}) {
 
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -36,6 +36,8 @@ function AgreeCheck({className}) {
           '&.Mui-checked': { color: '#C9B6E4'},
         }}
         className={className}
+        checked={checked}
+        onChange={onChange}
       />
       {/* 체크되면 mui-checked 클래스명이 들어감 */}
     </div>  )

@@ -2,7 +2,10 @@ import React from 'react'
 import CloseIcon from '../icons/CloseIcon'
 import AgreeCheck from '../_common/AgreeCheck'
 
-function CartItem({img, title, num, price}) {
+function CartItem({imgurl, title, num, price}) {
+
+  const firstImg = imgurl.split(',')[0];
+  
   return (
     <div className='cartproductitem'>
       <CloseIcon className={'cart-closebtn'}/>
@@ -10,7 +13,7 @@ function CartItem({img, title, num, price}) {
         <div className='cart-check'>
           <AgreeCheck className={'cart-mui-check'}/>
         </div>
-        <img src={img} alt="cart-product" />
+        <img src={`http://localhost/admin/product/upload/${firstImg}`} alt="cart-product" />
       </div>
       <div className='cart-checkinfo'>
         <b>{title}</b>

@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import Swal from 'sweetalert2'
 
 
-function AlertBtn2({type}) {
+function AlertBtn2({type, onConfirm, onCancel}) {
 
   useEffect(() => {
     const alert2con = {
@@ -26,9 +26,18 @@ function AlertBtn2({type}) {
         confirmButton: 'custom-confirm-button02',
         cancelButton: 'custom-cencel-button02',
         htmlContainer: 'custom-html-container02',
+      },
+      willOpen: () => {
+        document.body.style.paddingRight = '18px'; // 레이아웃 흔들림 방지
+      }
+    }).then((result)=>{
+      if(result.isConfirmed){
+        onConfirm?.();
+      } else if (result.isDismissed){
+        onCancel?.();
       }
     });
-  }, [type])
+  }, [type, onConfirm, onCancel])
   
   return null
 }
