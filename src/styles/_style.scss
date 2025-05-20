@@ -262,7 +262,7 @@ input, textarea{
         top: 0;
         z-index: 10;
     }
-    
+
     .closeicon{width: 14px; height: 14px; cursor: pointer;}
     .backicon{width: 14px; height: 14px; cursor: pointer;}
     img{width: 100%;}
@@ -273,7 +273,7 @@ input, textarea{
     width: 100%;
     .swiper-slide{
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: flex-start;
         flex-direction: row;
     }

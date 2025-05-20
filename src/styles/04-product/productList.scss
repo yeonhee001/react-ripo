@@ -1,27 +1,26 @@
 .product-list{
     padding-bottom: 135px;
     min-height: calc(100vh - 135px);
-
-    .product-list-num > span{
-        display: inline-block;
-        margin-right: 5px;
-        color: #C9B6E4;
-        font-family: 'S-CoreDream-5Medium';
-        margin-bottom: 16px;
+}
+.product-list-num > span{
+    display: inline-block;
+    margin-right: 5px;
+    color: #C9B6E4;
+    font-family: 'S-CoreDream-5Medium';
+    margin-bottom: 16px;
+}
+.product-list-item-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    img{width: 100%; border-radius: 10px;}
+    .carditem{
+        flex: 1 1 calc(50% - 16px);
+        min-width: 0;
     }
-    .product-list-item-box{
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-        img{width: 100%; border-radius: 10px;}
-        .carditem{
-            flex: 1 1 calc(50% - 16px);
-            min-width: 0;
-        }
-        .placeholder{
-            visibility: hidden;
-            pointer-events: none;
-        }
+    .placeholder{
+        visibility: hidden;
+        pointer-events: none;
     }
 }
 

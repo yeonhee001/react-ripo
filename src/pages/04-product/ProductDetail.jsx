@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules';
-import { motion, AnimatePresence } from "framer-motion";
 import TabMenu from '../../component/04-product/TabMenu'
 import ProductSlide from '../../component/04-product/ProductSlide';
 import InfoMessage from '../../component/_common/InfoMessage';
@@ -11,7 +10,7 @@ import BtnShort from '../../component/_common/BtnShort';
 import BoxIcon from '../../component/icons/BoxIcon';
 import TopIcon from '../../component/icons/TopIcon';
 import BottomBar from '../../component/04-product/BottomBar';
-import SnackBar from '../../component/04-product/SnackBar';
+import DetailContent from '../../component/04-product/DetailContent';
 import '../../styles/04-product/productDetail.scss';
 
 
@@ -24,17 +23,16 @@ function ProductDetail() {
   const [categorySub, setCategorySub] = useState(null);
   const [categoryMain, setCategoryMain] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-
+  
   // 모든 데이터 중 파라미터 id값과 일치하는 id값의 상품 데이터 가져오기.
   useEffect(()=>{
     axios.get('http://localhost/admin/api/p_list.php')
     .then(res=>{
-      // console.log(res.data);
       const matchedItem = res.data.find(product => String(product.id) === String(id));
       setProductData(matchedItem);
       setCategoryItemId(matchedItem.cat_id);
     })
-  },[])
+  },[id])
 
   // 카테고리(대, 중) name 가져오기.
   useEffect(()=>{
@@ -48,13 +46,17 @@ function ProductDetail() {
       const matchedSub = res.data.find(item => String(item.id) === String(matchedItem.cat_parent));
       setCategorySub(matchedSub);
       if (!matchedSub) return;
-
+      
       const matchedMain = res.data.find(item => String(item.id) === String(matchedSub.cat_parent));
       setCategoryMain(matchedMain);
     })
+    
+
   },[categoryItemId])
   
   const imgArr = productData?.p_thumb.split(',');
+
+  
 
   return (
     <div className='productdetail'>
@@ -102,8 +104,8 @@ function ProductDetail() {
       <TabMenu type='product' onTabChange={setSelectedTab}/>
       
       <div className='productdetail-detail-info'>
-        {selectedTab === 0 ? (
-          <div dangerouslySetInnerHTML={{ __html: productData?.p_content }} />
+        {selectedTab === 0  ? (
+          <DetailContent sanitizedHTML={productData?.p_content}/>
         ) : (
           <div>
             <InfoMessage type={'detailfaq'}/>
@@ -119,27 +121,7 @@ function ProductDetail() {
 
       <TopIcon className={'productdetail-topicon'}/>
 
-      {/* <SnackBar/> */}
-
-      {isOpen && <div className='bottombar-overlay' onClick={()=>setIsOpen(false)}/>}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            <motion.div
-            initial={{ opacity: 0, transform: 'translate(-50%, 100%)' }} // 아래에서 시작
-            animate={{ opacity: 1, transform: 'translate(-50%, 0%)' }} // 위로 올라오면서 나타남
-            exit={{ opacity: 0, transform: 'translate(-50%, 100%)' }} // 사라질 땐 다시 아래로
-            transition={{ duration: 0.3 }}
-            className={'productdetail-bottombar-motion'}
-            >
-              <BottomBar 
-                isOpen={isOpen} setIsOpen={setIsOpen}
-                onClose={()=>setIsOpen(false)}/>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-
+      <BottomBar isOpen={isOpen} setIsOpen={setIsOpen} data={productData}/>
     </div>
   )
 }

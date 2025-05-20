@@ -1,144 +1,126 @@
 .productdetail{
     padding-bottom: 135px;
     position: relative;
-
-    .productdetail-topicon{
-        position: fixed;
-        right: calc((100vw - 480px) / 2 + 18px); bottom: 130px;
-        cursor: pointer;
-    }
-    // 하단바
-    .bottombar-btnbox{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-
-        .bottombar{
-            width: 50%;
-            p{font-size: 16px;}
-        }
-    }
-    .bottombar-expanded{
-        position: fixed;
-        left: calc((100vw - 480px) / 2); bottom: 0;
-        width: 100vw; max-width: 480px;
-        padding: 36px 18px 18px 18px;
-        transform: translateY(100%);
-        transition: transform 0.3s ease-in-out;
-        z-index: 100;
-        background: white;
-        border-radius: 16px 16px 0 0;
-        box-shadow: 0 -4px 10px -4px rgba(0, 0, 0, 0.2);
-
-        &.active{transform: translateY(0);}
-    }
-    .bottombar-drag-handle{
-        content: '';
-        position: absolute;
-        top: 12px; left: 50%;
-        transform: translateX(-50%);
-        width: 45px; height: 4px;
-        background-color: #f3f3f3;
-    }
-    .expanded-content-top, 
-    .expanded-content-bottom{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 16px 0;
-        border-bottom: 2px solid #f9f9f9;
-    }
-    .expanded-content-top{
-        .select-num{
-            width: 30%;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-    }
-    .expanded-content-bottom{
-        margin-bottom: 16px;
-        p{
-            font-size: 12px;
-            font-family: 'S-CoreDream-3Light';
-            span{display: inline-block; margin-left: 5px;}
-        }
-        span{font-family: 'S-CoreDream-5Medium';}
-    }
-    // .bottombar-box{
-    //     position: fixed;
-    //     width: 100vw; max-width: 480px;
-    //     left: calc((100vw - 480px) / 2); bottom: 0;
-    //     padding: 36px 18px 18px 18px;
-    //     background-color: white;
-    //     border-radius: 16px 16px 0 0;
-    //     box-shadow: 0 -4px 10px -4px rgba(0, 0, 0, 0.2);
-    //     z-index: 100;
-
-    //     .bottombar-drag-handle{
-    //         content: '';
-    //         position: absolute;
-    //         top: 12px; left: 50%;
-    //         transform: translateX(-50%);
-    //         width: 45px; height: 4px;
-    //         background-color: #f3f3f3;
-    //     }
-
-    //     .bottombar-btnbox{
-    //         display: flex;
-    //         justify-content: space-between;
-    //         align-items: center;
-    //         gap: 10px;
-
-    //         .bottombar{
-    //             width: 50%;
-    //             p{font-size: 16px;}
-    //         }
-    //     }
-
-    //     // expanded
-    //     .bottombar-expanded{
-    //         background-color: white;
-    //         transform: translateY(100%);
-    //         transition: transform 0.3s ease-in-out;
-    //         z-index: 90;
-    //         pointer-events: none;
-    //         opacity: 0;
-
-    //         &.active{
-    //             transform: translateY(0);
-    //             pointer-events: auto;
-    //             opacity: 1;
-    //         }
-    //     }
-    //     .expanded-content-top, 
-    //     .expanded-content-bottom{
-    //         display: flex;
-    //         justify-content: space-between;
-    //         align-items: center;
-    //         padding: 16px 0;
-    //         border-bottom: 2px solid #f9f9f9;
-    //     }
-    //     .expanded-content-top{
-    //         .select-num{
-    //             width: 30%;
-    //             display: flex;
-    //             align-items: center;
-    //             gap: 16px;
-    //         }
-    //     }
-    //     .expanded-content-bottom{
-    //         margin-bottom: 16px;
-    //         p{
-    //             font-size: 12px;
-    //             font-family: 'S-CoreDream-3Light';
-    //             span{display: inline-block; margin-left: 5px;}
-    //         }
-    //         span{font-family: 'S-CoreDream-5Medium';}
-    //     }
-    // }
 }
+
+.productdetail-topicon{
+    position: fixed;
+    right: calc((100vw - 480px) / 2 + 18px); bottom: 105px;
+    cursor: pointer;
+}
+
+.bottombar-box{position: relative;}
+// 하단바
+.bottombar-overlay{
+    position: fixed;
+    width: 100vw; max-width: 480px;
+    margin: 0 auto;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 110;
+}
+.bottombar-collapsed,
+.bottombar-expanded{
+    position: fixed;
+    width: 100vw; max-width: 480px;
+    left: calc((100vw - 480px) / 2); bottom: 0;
+    padding: 18px;
+    background-color: white;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0 -4px 10px -4px rgba(0, 0, 0, 0.2);
+}
+.bottombar-collapsed{z-index: 100;}
+.bottombar-drag-handle{
+    content: '';
+    position: absolute;
+    top: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 45px; height: 4px;
+    background-color: #f3f3f3;
+}
+// expanded
+.bottombar-expanded{
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 120;
+    padding-top: 18px;
+    background-color: white;
+    pointer-events: none;
+
+    &.active{
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+.expanded-content-top, 
+.expanded-content-bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 2px solid #f9f9f9;
+}
+.expanded-content-top{
+    .select-num{
+        width: 30%;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        .select-num-icon{cursor: pointer;}
+    }
+}
+.expanded-content-bottom{
+    margin-bottom: 16px;
+    p{
+        font-size: 12px;
+        font-family: 'S-CoreDream-3Light';
+        span{display: inline-block; margin-left: 5px;}
+    }
+    span{font-family: 'S-CoreDream-5Medium';}
+}
+.bottombar-btnbox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    .bottombar{
+        width: 50%;
+        p{font-size: 16px;}
+    }
+}
+
+// 스낵바
+.snackbar-box{
+    position: fixed;
+    max-width: 444px;
+    left: 18px; right: 18px;
+    bottom: 105px;
+    margin: 0 auto;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+
+    &.hide{opacity: 0;}
+
+    .snackbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #C9B6E4;
+        border-radius: 10px;
+        padding: 16px;
+        color: white;
+        font-size: 14px;
+        transition: .5s;
+
+        a{
+            text-decoration: underline;
+            color: white;
+            font-size: 14px;
+        }
+    }
+}
+
 
 // 탭메뉴 상단 구분선
 .productdetail-info-middleline{
@@ -226,7 +208,6 @@
     > div{
         width: 50%;
         padding: 16px 0;
-        margin-bottom: 16px;
         border-bottom: 1px solid #EEE9FF;
         border-radius: 16px 16px 0 0;
         cursor: pointer;
@@ -240,19 +221,37 @@
 }
 
 .productdetail-detail-info{
-    margin-top: 34px;
+    margin-top: 50px;
     // margin-left: -18px;
-    td{img{
+    will-change: transform;
+    img{
         // width: 100vw;
-        width: 100%;
-        max-width: 480px;
-    }}
-    p{img{width: 100%; max-width: 480px;}}
+        width: 100% !important;
+        max-width: 480px !important;
+        height: auto !important;
+        // aspect-ratio: 3 / 4;
+    }
     .detailfaq-btn{
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 10px;
-        margin-top: 36px;
+        margin: 36px 0 52px;
+    }
+}
+
+
+
+
+
+@media (max-width: 480px) {
+    .productdetail-topicon{
+        right: 18px !important;
+    }
+    // 하단바
+    .bottombar-collapsed,
+    .bottombar-expanded{
+        width: 100% !important;
+        left: 0 !important;
     }
 }

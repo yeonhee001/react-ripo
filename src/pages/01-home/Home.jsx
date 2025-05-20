@@ -71,7 +71,7 @@ function Home() {
       setNewCtgrName(matchedCategories2.map(ctgr => ctgr?.cat_name ?? ''))
     })
     .catch(e => console.error('카테고리 데이터 불러오기 실패', e));
-}, [mainSlideItem]);
+}, [mainSlideItem, newSlideItem]);
 
   // 메인슬라이드 로컬스토리지 저장, 하루시간 설정 후 삭제되게 함
   useEffect(()=>{

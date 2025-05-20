@@ -1,8 +1,8 @@
 import React from 'react'
 
-function PlusIcon({className}) {
+function PlusIcon({ className, onClick }) {
   return (
-    <div className={className}>
+    <div className={className} onClick={onClick}>
         <img src="/imgs/_icons/PlusIcon.svg" alt="plusicon"/>
     </div>
   )
