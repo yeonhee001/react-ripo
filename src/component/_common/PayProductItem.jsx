@@ -1,15 +1,18 @@
 import React from 'react'
 
-function PayProductItem({img, title, num, price}) {
+function PayProductItem({imgurl, title, num, price}) {
+
+  const firstImg = imgurl.split(',')[0];
+
   return (
     <div className='payproductitem'>
       <p className='productitem-img'>
-        <img src={img} alt="productimg" />
+        <img src={`http://localhost/admin/product/upload/${firstImg}`} alt="productimg" />
       </p>
       <div className='productitem-text'>
         <b>{title}</b>
         <span>수량 {num}</span>
-        <p>{price}원</p>
+        <p>{Number(price).toLocaleString()}원</p>
       </div>
     </div>
   )

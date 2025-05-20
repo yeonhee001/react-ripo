@@ -1,17 +1,17 @@
 import React from 'react'
 
-function PayForm({className, label, name, type="text", value, onChange, placeholder}) {
+function PayForm({className, label, name, type="text", value, onChange}) {
   return (
     <div className={className}>
       <p>{label}</p>
-      {(name || onChange || value || placeholder) && (
+      {name && (
         <input 
           id={name}
           name={name}
           type={type}
-          value={value}
+          value={value || ''}
           onChange={onChange}
-          placeholder={placeholder}
+          readOnly={!onChange}
         />
       )}
     </div>

@@ -237,6 +237,7 @@ input, textarea{
     .productitem-img{
         width: 130px; height: 130px;
         margin-right: 10px;
+        flex-shrink: 0;
         >img{
             width: 100%;
             border-radius: 10px;
