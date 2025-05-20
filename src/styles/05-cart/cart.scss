@@ -42,12 +42,6 @@
 
 .cart-btn{
   padding-bottom: 135px;
-  .btnlong-pay{
-    background-color: #C9B6E4 !important;
-    .btnlong-label{
-      color: #fff !important;
-    }
-  }
 }
 
 .cart-noitem{
@@ -82,6 +76,7 @@
   .cart-checkitem{
     width: 130px; height: 130px;
     margin-right: 10px;
+    flex-shrink: 0;
     .cart-check{
       position: relative;
       .cart-mui-check{
@@ -90,7 +85,8 @@
       }
     }
     >img{
-      width: 100%;
+      width: 100%; height: auto;
+      display: block;
       border-radius: 10px;
     }
   }

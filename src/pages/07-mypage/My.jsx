@@ -17,7 +17,7 @@ function My() {
   };
 
   const logoutConfirm = ()=>{
-    axios.get("http://localhost/admin/logout.php",{
+    axios.get("http://localhost/admin/api/logout.php",{
       withCredentials: true, // 세션 유지하려면 반드시 포함!
     })
     .then(res=>{

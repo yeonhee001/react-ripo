@@ -12,12 +12,28 @@
 .all-payinfo{
   padding-bottom: 32px;
 }
+.address-num{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  >p{
+    background-color: #EEE9FF;
+    max-width: 95px;
+    border-radius: 100px;
+    padding: 10px;
+    font-family: 'S-CoreDream-3Light';
+    font-size: 12px;
+    text-align: center;
+    margin: 0 0 10px 7px;
+  }
+}
 
 .pay-input{
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  flex: 1;
   p{
     width: 62px;
     flex-shrink: 0;
@@ -148,10 +164,4 @@ input[type="number"] {
 
 .all-btnlong{
   padding-bottom: 50px;
-  .btnlong-pay{
-    background-color: #C9B6E4 !important;
-    .btnlong-label{
-      color: #fff !important;
-    }
-  }
 }
