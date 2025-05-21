@@ -84,9 +84,15 @@
 .home-item-box{
     margin-bottom: 50px;
     .home-item-box-title{
-        font-size: 24px;
-        font-family: 'S-CoreDream-5Medium';
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
         margin-bottom: 10px;
+        span{
+            display: inline-block;
+            font-size: 24px;
+            font-family: 'S-CoreDream-5Medium';
+        }
     }
 }
 

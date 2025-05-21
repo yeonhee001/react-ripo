@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
+import { useSwipeable } from 'react-swipeable';
 import PlusIcon from '../icons/PlusIcon'
 import MinusIcon from '../icons/MinusIcon'
 
-function BottomBarExpanded({ isOpen, data, onAddToCart, onTouchStart, onTouchEnd }) {
+function BottomBarExpanded({ isOpen, setIsOpen, data, onAddToCart }) {
     const navi = useNavigate();
     const userId = sessionStorage.getItem('mem_id');
     const [ea, setEa] = useState(1);
     const [price, setPrice] = useState(data?.price);
 
     const firstImg = data?.p_thumb.split(',')[0];
+
+    const swipeHandlers = useSwipeable({
+        onSwipedDown: () => setIsOpen(false),
+        // onSwipedUp: () => setIsOpen(true),
+        delta: 50,          // 스와이프 거리 기준 (기본값 10)
+        trackMouse: true,   // pc 마우스 드래그 허용
+        preventDefaultTouchmoveEvent: true,   // 드래그 방지
+    });
 
     // data와 ea 값에 따른 price 변동
     useEffect(()=>{
@@ -44,7 +53,18 @@ function BottomBarExpanded({ isOpen, data, onAddToCart, onTouchStart, onTouchEnd
 
             if(check) {
                 // 장바구니 중복
-                onAddToCart('already')
+                const putData = {
+                    mem_id: userId,
+                    p_id: data.id,
+                    p_price: String(price),
+                    p_ea: String(ea),
+                }
+
+                // console.log(putData);
+                axios.put('http://localhost/admin/api/cart.php', putData)
+                .then(() => {onAddToCart('add');})
+                .catch(() => {onAddToCart('error');});
+
             } else {
                 // 장바구니 담기
                 const cartData = {
@@ -84,9 +104,7 @@ function BottomBarExpanded({ isOpen, data, onAddToCart, onTouchStart, onTouchEnd
             p_ea: String(ea),
             p_thumb: firstImg,
             cat_id: data.cat_id
-        }
-        console.log(data.cat_id);
-        
+        }        
         
         navi('/pay', {
             state:  payData
@@ -96,8 +114,7 @@ function BottomBarExpanded({ isOpen, data, onAddToCart, onTouchStart, onTouchEnd
   return (
     <div 
         className={`bottombar-expanded ${isOpen ? 'active' : ''}`}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
+        {...swipeHandlers}
     >
         <div className='bottombar-drag-handle'/>
         <div className='expanded-content'>

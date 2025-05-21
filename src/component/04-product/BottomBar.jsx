@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 // import { motion, AnimatePresence } from "framer-motion";
 import BottomBarExpanded from './BottomBarExpanded'
 import SnackBar from './SnackBar';
@@ -7,27 +7,6 @@ function BottomBar({ isOpen, setIsOpen, data }) {
     const [snack, setSnack] = useState(false);      // 랜더링 여부
     const [snackVisivle, setSnackVisible] = useState(false);      // 화면 표시 여부
     const [snackType, setSnackType] = useState(null);
-
-    const touchStartY = useRef(null)
-    const containerRef = useRef(null)
-
-    function handleTouchStart(e) {
-        touchStartY.current = e.touches[0].clientY
-    }
-
-    const handleTouchEnd = (e, direction = 'up') => {
-        const touchEndY = e.changedTouches[0].clientY
-        if (touchStartY.current !== null) {
-            const deltaY = touchStartY.current - touchEndY
-            if (direction === 'up' && deltaY > 50) {
-                setIsOpen(true)
-            }
-            if (direction === 'down' && deltaY < -50) {
-                setIsOpen(false)
-            }
-        }
-        touchStartY.current = null
-    }
 
     useEffect(()=>{
         if (isOpen) {
@@ -40,21 +19,6 @@ function BottomBar({ isOpen, setIsOpen, data }) {
         return () => {
             document.body.style.overflow = '';
         };
-    },[isOpen])
-
-    useEffect(()=>{
-        const el = containerRef.current
-        if (!el) return
-        
-        const preventScroll = (e) => e.preventDefault()
-        
-        if (isOpen) {
-            el.addEventListener('touchmove', preventScroll, { passive: false })
-        }
-        
-        return () => {
-            el.removeEventListener('touchmove', preventScroll)
-        }
     },[isOpen])
     
     function togglebar() {
@@ -89,9 +53,7 @@ function BottomBar({ isOpen, setIsOpen, data }) {
 
         {/* 확장 */}
         <BottomBarExpanded 
-            isOpen={isOpen} data={data} onAddToCart={handleAddtoCart}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={(e) => handleTouchEnd(e, 'down')}
+            isOpen={isOpen} setIsOpen={setIsOpen} data={data} onAddToCart={handleAddtoCart}
         />
         {/* <AnimatePresence>
             {isOpen && (
