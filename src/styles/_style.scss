@@ -354,3 +354,25 @@ input, textarea{
         white-space: pre-line;
     }
 }
+
+// 로딩페이지
+.loading{
+    background-color: #fff;
+    max-width: 480px;
+    height: 100vh;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: calc((100vw - 480px) / 2);
+    z-index: 99999;
+    .loading-img{
+        width: 100%;
+        >img{
+            width: 100%;
+        }
+    }
+}

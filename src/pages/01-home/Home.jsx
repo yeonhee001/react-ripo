@@ -5,11 +5,13 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import CardList from '../../component/_common/CardList'
 import HomeSlide from '../../component/01-home/HomeSlide'
 import CategoryLink from '../../component/01-home/CategoryLink';
+import DataLoading from '../../component/_common/DataLoading';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import '../../styles/01-home/home.scss'
 
 function Home() {
+  const [loading, setLoading] = useState(true); // 데이터 로딩
   const [allItem, setAllItem] = useState([]);
   const [mainctgrName, setMainCtgrName] = useState([]);
   const [newCtgrName, setNewCtgrName] = useState([]);
@@ -109,6 +111,21 @@ function Home() {
     }
 
   }, [allItem]);
+
+  useEffect(()=>{
+    if(mainSlideItem !== null){
+      const timer = setTimeout(()=>{
+        setLoading(false);
+      },700);
+      return ()=>clearTimeout(timer);
+    }
+  },[mainSlideItem]);
+
+  if(loading){
+    return(
+      <DataLoading/>
+    )
+  }
   
   return (
     <div className='home'>
