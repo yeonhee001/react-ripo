@@ -20,10 +20,6 @@ function BottomBar({ isOpen, setIsOpen, data }) {
             document.body.style.overflow = '';
         };
     },[isOpen])
-    
-    function togglebar() {
-        setIsOpen(!isOpen);
-    }
 
     const handleAddtoCart = (type) => {
         setSnackType(type);
@@ -45,8 +41,9 @@ function BottomBar({ isOpen, setIsOpen, data }) {
         {/* 기본 */}
         {!isOpen && (
             <div className='bottombar-collapsed'>
-                <div className='btnlong'>
-                    <p className='btnlong-label' onClick={togglebar}>구매하기</p>
+                <div className='btnlong'  onClick={()=>setIsOpen(true)}>
+                    {/* setTimeOut으로 상태 변경 시점 미뤄 이벤트나 렌더링 타이밍 문제 방지 */}
+                    <p className='btnlong-label'>구매하기</p>
                 </div>
             </div>
         )}
