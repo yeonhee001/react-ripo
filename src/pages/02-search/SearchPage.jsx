@@ -13,7 +13,7 @@ function SearchPage() {
     navi(`/search/searchdetail/${encodeURIComponent(word)}`) //encodeURIComponent(word)는 띄어쓰기나 특수문자가 있을 경우 대비하여 인코딩해줌
   }
 
-  const keyword = ['디즈니', '펜', '키링', '그로밋', '피클스', '다이어리'];
+  const keyword = ['디즈니', '펜', '키링', '그로밋', '피클스', '다이어리', '메모지'];
 
   return (
     <div className='search-page'>
