@@ -11,11 +11,13 @@ import BoxIcon from '../../component/icons/BoxIcon';
 import TopIcon from '../../component/icons/TopIcon';
 import BottomBar from '../../component/04-product/BottomBar';
 import DetailContent from '../../component/04-product/DetailContent';
+import DataLoading from '../../component/_common/DataLoading';
 import '../../styles/04-product/productDetail.scss';
 
 function ProductDetail() {
   const { type, id } = useParams();
   
+  const [loading, setLoading] = useState(true); // 데이터 로딩
   const [selectedTab, setSelectedTab] = useState(0);
   const [productData, setProductData] = useState(null);
   const [categorySub, setCategorySub] = useState(null);
@@ -63,6 +65,20 @@ function ProductDetail() {
   
   const imgArr = productData?.p_thumb.split(',');
 
+  useEffect(()=>{
+    if(productData !== null){
+      const timer = setTimeout(()=>{
+        setLoading(false);
+      },300);
+      return ()=>clearTimeout(timer);
+    }
+  },[productData]);
+
+  if(loading){
+    return(
+      <DataLoading/>
+    )
+  }
   
   return (
     <div className='productdetail'>

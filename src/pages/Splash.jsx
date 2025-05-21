@@ -18,6 +18,7 @@ function Splash() {
   useEffect(()=>{
     const randomImg = Math.floor(Math.random()*splashImgs.length);
     setSelectImg(splashImgs[randomImg]);
+    
     const timer = setTimeout(()=>{
       setFadeOut(true);
     }, 2500);

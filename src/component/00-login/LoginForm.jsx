@@ -36,7 +36,12 @@ function LoginForm({id, label, type, autoComplete, value, onChange, maxLength, m
               borderBottomColor: '#999',
               borderBottomWidth: '2px', // 호버 시 두께
             },
-            '& .css-1yrc8ca-MuiInputBase-input-MuiInput-input' : { color: '#333', fontSize: '16px', fontFamily: 'S-CoreDream-4Regular'}
+            '& .css-1yrc8ca-MuiInputBase-input-MuiInput-input' : { color: '#333', fontSize: '16px', fontFamily: 'S-CoreDream-4Regular'},
+            '& input:-webkit-autofill': {
+              WebkitBoxShadow: '0 0 0 1000px white inset',
+              WebkitTextFillColor: '#000',
+              transition: 'background-color 5000s ease-in-out 0s',
+            },
           }}
         />
       </div>
