@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-function LoginForm({id, label, type, autoComplete, value, onChange}) {
+function LoginForm({id, label, type, autoComplete, value, onChange, maxLength, minLength}) {
   return (
     <Box
       component="div"
@@ -19,7 +19,10 @@ function LoginForm({id, label, type, autoComplete, value, onChange}) {
           value={value}
           onChange={onChange}
           variant="standard"
-          
+          inputProps={{
+            maxLength: maxLength,
+            minLength: minLength,
+          }}
           sx={{
             width: '100%',
             '& label.Mui-focused': {

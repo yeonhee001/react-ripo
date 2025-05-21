@@ -1,13 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function PayProductItem({imgurl, title, num, price}) {
+function PayProductItem({type, id, imgurl, title, num, price}) {
 
-  const firstImg = imgurl.split(',')[0];
+  const navi = useNavigate();
+  function goToDetailPage(){
+    navi(`/product/${type}/${id}`)
+  };
 
   return (
-    <div className='payproductitem'>
+    <div className='payproductitem' onClick={goToDetailPage}>
       <p className='productitem-img'>
-        <img src={`http://localhost/admin/product/upload/${firstImg}`} alt="productimg" />
+        <img src={`http://localhost/admin/product/upload/${imgurl}`} alt="productimg" />
       </p>
       <div className='productitem-text'>
         <b>{title}</b>

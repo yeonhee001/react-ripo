@@ -14,9 +14,10 @@ import '../../styles/05-cart/cart.scss';
 function CartList() {
   const navi = useNavigate();
   const [addList, setAddList] = useState([]); // 상품 리스트
-  const [ctgrList, setCtgrList] = useState([]); // 카테고리 리스트
   const [cartList, setCartList] = useState([]); // 사용자 장바구니 리스트
   const [checkItems, setCheckItems] = useState({}); // 장바구니 체크표시
+  const [cartCtgrList, setCartCtgrList] = useState([]); // 사용자 장바구니 리스트 카테고리 가져오기
+  const [productCtgrList, setProductCtgrList] = useState([]); // 추천 상품 리스트 카테고리 가져오기
 
   useEffect(()=>{
     window.scrollTo(0,0);
@@ -47,7 +48,7 @@ function CartList() {
   // 총 가격
   const totalPrice = cartList.reduce((acc,item)=> {
     if(checkItems[item.id]){
-      return acc + Number(item.p_price)*Number(item.p_ea);
+      return acc + Number(item.p_price);
     }
     return acc;
   }, 0)
@@ -55,6 +56,7 @@ function CartList() {
   const formatTotal = (price)=>price.toLocaleString('ko-KR');
 
 
+  // 서버에서 장바구니 목록 가져와서 로컬스토리지에 저장
   useEffect(()=>{
     const memId = sessionStorage.getItem('mem_id');
     if(!memId) return;
@@ -62,8 +64,27 @@ function CartList() {
     axios.get(`http://localhost/admin/api/cart.php?mem_id=${memId}`)
     .then(res=>{
       setCartList(res.data);
+      localStorage.setItem('cart', JSON.stringify(res.data));
     })
   },[])
+
+  // 로컬스토리지 갱신
+  useEffect(()=>{
+    localStorage.setItem('cart', JSON.stringify(cartList));
+  },[cartList])
+
+  useEffect(() => {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      try {
+        setCartList(JSON.parse(savedCart));
+      } catch (e) {
+        console.error('로컬스토리지 파싱 에러', e);
+      }
+    }
+  }, []);
+
+
 
   useEffect(()=>{
     axios.get('http://localhost/admin/api/p_list.php')
@@ -76,13 +97,19 @@ function CartList() {
   useEffect(()=>{
     axios.get('http://localhost/admin/api/category.php')
     .then(res=>{
-      const matchCtgr = productList.map(item=>{
-        return res.data.find(ctgr => String(ctgr.id) === String(item.cat_id));
+      const matchCartCtgr = cartList.map(item=>{
+        const ctgr = res.data.find(p => String(p.id) === String(item.cat_id));
+        return ctgr?.cat_name ?? '';
       });
-      setCtgrList(matchCtgr.map(ctgr=>ctgr?.cat_name ?? ''));
+      const matchProductCtgr = productList.map(item=>{
+        const ctgr = res.data.find(p => String(p.id) === String(item.cat_id));
+        return ctgr?.cat_name ?? '';
+      });
+      setCartCtgrList(matchCartCtgr);
+      setProductCtgrList(matchProductCtgr);
     })
     .catch(e => console.error('카테고리 데이터 불러오기 실패', e));
-  },[productList])
+  },[cartList, productList])
 
   // 선택 삭제 관련
   const deleteSelect = async()=>{
@@ -167,12 +194,12 @@ function CartList() {
             </div>
 
             {cartList.map((item,i)=>(
-              <CartItem key={item.id} type={ctgrList[i] ?? ''} id={item.p_id} imgurl={item.p_thumb} title={item.p_name} num={item.p_ea} price={item.p_price} checked={checkItems[item.id] || false} onChange={()=>checkChange(item.id)} onClick={()=>deleteItem(item.id)}/>
+              <CartItem key={item.id} type={cartCtgrList[i] ?? ''} id={item.p_id} imgurl={item.p_thumb} title={item.p_name} num={item.p_ea} price={item.p_price} checked={checkItems[item.id] || false} onChange={()=>checkChange(item.id)} onClick={()=>deleteItem(item.id)}/>
             ))}
 
             <div className='cart-addproduct'>
               <PayDoneBar className={'cart-mid-title'} titleClassName={'cart-title'} title={'함께 구매하면 좋을 상품'}/>
-              <CardList type={ctgrList} data={productList} rows={1} slidesPerView={2.6}/>
+              <CardList type={productCtgrList} data={productList} rows={1} slidesPerView={2.6}/>
             </div>
 
             <div className='cart-productprice'>

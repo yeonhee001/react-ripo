@@ -1,10 +1,9 @@
 import React from 'react'
 
-function PayDoneBar({className, titleClassName, dayClassName, title, day}) {
+function PayDoneBar({className, titleClassName, title}) {
   return (
     <div className={className}>
       <p className={titleClassName}>{title}</p>
-      {day && <span className={dayClassName}>{day}</span>}
     </div>
   )
 }

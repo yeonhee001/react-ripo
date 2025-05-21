@@ -12,7 +12,8 @@ import '../../styles/06-pay/pay.scss';
 
 function Pay() {
   const navi = useNavigate();
-  const {state} = useLocation(); // CartList에서 보낸 state
+  const location = useLocation();
+  const payData = location.state; // 상품 디테일 페이지에서 보내준 state
   // const [userInfo, setUserInfo] = useState([]);
   const [typeSelect, setTypeSelect] = useState('card');
   const [formData, setFormData] = useState({
@@ -22,10 +23,42 @@ function Pay() {
     address: '',
     addressDetail: ''
   });
-  const product = state?.items ?? [];
-  const totalPrice = state?.totalPrice ?? 0;
-  const delivery = state?.delivery ?? 0;
-  const totalOrder = state?.totalOrder ?? 0;
+
+  const [product, setProduct] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [delivery, setDelivery] = useState(0);
+  const [totalOrder, setTotalOrder] = useState(0);
+  
+  useEffect(() => {
+    if(payData?.items){
+      const items = payData.items;
+
+      // 문자열 숫자일 수 있으니 숫자형 변환 꼭 하기
+      const recalculatedTotalPrice = items.reduce((acc, item) => 
+        acc + Number(item.p_price), 0
+      );
+
+      setProduct(items);
+      setTotalPrice(recalculatedTotalPrice);
+      setDelivery(payData.delivery ?? 0);
+      setTotalOrder(recalculatedTotalPrice + (payData.delivery) ?? 0);
+    } else if(payData?.p_id){
+      const ea = Number(payData.p_ea ?? 1);
+      const pricePerUnit = Number(payData.p_price);
+      setProduct([{
+        id: payData.p_id,
+        p_id: payData.p_id,
+        p_name: payData.p_name,
+        p_price: pricePerUnit,
+        p_thumb: payData.p_thumb,
+        p_ea: ea,
+        cat_id: payData.cat_id
+      }]);
+      setTotalPrice(pricePerUnit);
+      setDelivery(2500);
+      setTotalOrder(pricePerUnit + 2500);
+    }
+  }, [payData]);
 
   useEffect(()=>{
     window.scrollTo(0,0);
@@ -67,14 +100,27 @@ function Pay() {
       price: item.p_price,
       ea: item.p_ea,
       thumb: item.p_thumb,
-      createdat: created_at
+      createdat: created_at,
+      catid: item.cat_id
     }));
 
     axios.post('http://localhost/admin/api/orders.php',orderData,{
       headers: { 'Content-Type': 'application/json' }
     })
     .then(res=>{
-      console.log(res.data);
+      // console.log(res.data);
+      // 결제완료한 상품 장바구니에서 제거
+      if (payData?.items) {
+        const purchasedItems = payData.items;
+        const purchasedIds = purchasedItems.map(item => item.id);
+        const cartget = JSON.parse(localStorage.getItem('cart')) || [];
+        const updateCart = cartget.filter(item => !purchasedIds.includes(item.id));
+        localStorage.setItem('cart', JSON.stringify(updateCart));
+
+        axios.post('http://localhost/admin/api/cart_delete.php', { ids: purchasedIds }, {
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
       navi('/pay/done');
     })
     .catch(e=>{
@@ -181,7 +227,7 @@ function Pay() {
       <ProductPrice className={'pay-productprice02'} titleClassName={'pay-title02'} priceClassName={'pay-price02'} title={'총 주문금액'} price={totalOrder.toLocaleString()}/>
 
       <div className='all-btnlong'>
-        <BtnLong className={'btnlong-pay'} label={'결제하기'} isActive={'true'} onClick={paydone}/>
+        <BtnLong className={'btnlong-pay'} label={'결제하기'} isActive={!!formData.address} onClick={paydone}/>
       </div>
     </div>
   )

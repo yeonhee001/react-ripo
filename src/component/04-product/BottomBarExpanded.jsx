@@ -53,14 +53,17 @@ function BottomBarExpanded({ isOpen, data, onAddToCart, onTouchStart, onTouchEnd
                     p_name: data.p_name,
                     p_price: String(price),
                     p_ea: String(ea),
-                    p_thumb: firstImg
+                    p_thumb: firstImg,
+                    cat_id: data.cat_id
                 }
                 
-                console.log('서버에 저장함!', cartData);
+                // console.log('서버에 저장함!', cartData);
                 
-                // axios.post('http://localhost/admin/api/cart.php', cartData)
-                // .then(() => {onAddToCart('add');})
-                // .catch(() => {onAddToCart('error');});
+                axios.post('http://localhost/admin/api/cart.php', cartData)
+                .then(() => {onAddToCart('add');})
+                .catch(() => {onAddToCart('error');});
+
+                
             }
         })
         .catch(err => console.error(err))
@@ -79,8 +82,11 @@ function BottomBarExpanded({ isOpen, data, onAddToCart, onTouchStart, onTouchEnd
             p_name: data.p_name,
             p_price: String(price),
             p_ea: String(ea),
-            p_thumb: firstImg
+            p_thumb: firstImg,
+            cat_id: data.cat_id
         }
+        console.log(data.cat_id);
+        
         
         navi('/pay', {
             state:  payData

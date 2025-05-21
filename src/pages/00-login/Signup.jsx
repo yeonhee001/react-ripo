@@ -100,12 +100,12 @@ function Signup() {
         }
 
         <div className='signup-longbtn'>
-          <BtnLong className={'signup-btn'} label={'회원가입'} isActive={jointext1.trim().length>0 && jointext2.trim().length>0 && jointext3.trim().length>0 && jointext4.trim().length>0 && agreeOption1===true} onClick={(e)=>{signupClick(); join(e);}} type={'submit'}/>
+          <BtnLong className={'signup-btn'} label={'회원가입'} isActive={jointext1.trim().length>0 && jointext2.trim().length>3 && jointext3.trim().length>7 && jointext4.trim().length>0 && agreeOption1===true} onClick={signupClick} type={'submit'}/>
         </div>
       </form>
       {
         showAlert && 
-        <AlertBtn1 type={'signupError'} onConfirm={alertConfirm}/>
+        <AlertBtn1 type={'signup'} onConfirm={alertConfirm}/>
       }
 
     </>

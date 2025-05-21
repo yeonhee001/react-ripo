@@ -9,7 +9,7 @@ function AlertBtn1({type, onConfirm}) {
       loginError: {
         txt: '<p class="custom-text01">아이디 또는 패스워드를 확인해 주세요.</p>'
       },
-      signupError: {
+      signup: {
         txt: '<p class="custom-text01">회원가입이 완료되었습니다.</p>'
       }
     }

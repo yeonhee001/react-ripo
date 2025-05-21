@@ -14,13 +14,17 @@ function SignupForm({form, type, value, onChange, maxLength}) {
       id : 'userId',
       label : <>아이디<sup style={{ position: 'relative', top: '-0.4em', fontSize: '0.6em' }}>*</sup></>,
       autoComplete : 'userid',
-      warn : '필수! 아이디는 4-12자 이내로 입력해주세요.'
+      warn : '필수! 아이디는 4-12자 이내로 입력해주세요.',
+      minLength: '4',
+      maxLength: '12'
     },
     password: {
       id : 'userPassword',
       label : <>비밀번호<sup style={{ position: 'relative', top: '-0.4em', fontSize: '0.6em' }}>*</sup></>,
       autoComplete : 'current-password',
-      warn : '필수! 비밀번호는 8-20자 이내로 입력해주세요.'
+      warn : '필수! 비밀번호는 8-20자 이내로 입력해주세요.',
+      minLength: '8',
+      maxLength: '20'
     },
     tel: {
       id : 'userTel',
@@ -38,7 +42,7 @@ function SignupForm({form, type, value, onChange, maxLength}) {
 
   return (
     <div className='signup-form'>
-        <LoginForm id={signupform[form].id} label={signupform[form].label} type={type} autoComplete={signupform[form].autoComplete} value={value} onChange={onChange} maxLength={maxLength}/>
+        <LoginForm id={signupform[form].id} label={signupform[form].label} type={type} autoComplete={signupform[form].autoComplete} value={value} onChange={onChange} minLength={signupform[form].minLength} maxLength={signupform[form].maxLength}/>
         <p>{signupform[form].warn}</p>
     </div>
   )
