@@ -109,14 +109,14 @@ https://
 ┃ ┣ ⚙️.env
 ┃ ┗ README.md
 ┣ 📂admin                     # 리포 ( Back-End_PHP 프로젝트 )
-┃ ┣ 📂api                     # API 호출 및 가공하는 라우터 폴더
-┃ ┣ 📂member                  #  폴더
-┃ ┣ 📂product                 #  폴더
-┃ ┣ 📜auth.php                # 
+┃ ┣ 📂api                     # 데이터 가공 및 반환을 담당하는 API 파일들이 위치한 폴더
+┃ ┣ 📂member                  # 회원가입, 탈퇴 등 회원 관련 데이터를 저장하고 관리하는 폴더
+┃ ┣ 📂product                 # 카테고리 및 상품을 생성, 수정, 삭제하는 기능 폴더
+┃ ┣ 📜auth.php
 ┃ ┣ 📜common.php
 ┃ ┣ 📜config.php
 ┃ ┣ 📜header.php
-┃ ┣ 📜index.php               # 서버의 메인 파일, 라우터를 연결하고 서버를 실행
+┃ ┣ 📜index.php
 ┃ ┣ 📜login.php
 ┃ ┣ 📜logout.php
 ┃ ┣ 📜table.php
