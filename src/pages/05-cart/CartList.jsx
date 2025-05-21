@@ -9,10 +9,12 @@ import ProductPrice from '../../component/_common/ProductPrice'
 import BtnLong from '../../component/_common/BtnLong';
 import InfoMessage from '../../component/_common/InfoMessage';
 import BtnShort from '../../component/_common/BtnShort';
+import DataLoading from '../../component/_common/DataLoading';
 import '../../styles/05-cart/cart.scss';
 
 function CartList() {
   const navi = useNavigate();
+  const [loading, setLoading] = useState(true); // 데이터 로딩
   const [addList, setAddList] = useState([]); // 상품 리스트
   const [cartList, setCartList] = useState([]); // 사용자 장바구니 리스트
   const [checkItems, setCheckItems] = useState({}); // 장바구니 체크표시
@@ -175,6 +177,21 @@ function CartList() {
         totalOrder: totalProductPrice + delivery
       }
     });
+  }
+
+  useEffect(()=>{
+    if(cartList !== null){
+      const timer = setTimeout(()=>{
+        setLoading(false);
+      },300);
+      return ()=>clearTimeout(timer);
+    }
+  },[cartList]);
+
+  if(loading){
+    return(
+      <DataLoading/>
+    )
   }
 
 

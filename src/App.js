@@ -30,8 +30,8 @@ function App() {
 
   if (isRoot && inNewDay) {
     localStorage.setItem("visited", today);
-    window.location.replace("/splash");
-    return null; 
+    window.location.replace("/splash");   
+    return; 
   }
 
   return (

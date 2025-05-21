@@ -5,11 +5,13 @@ import { Autoplay, Pagination } from 'swiper/modules';
 import CardList from '../../component/_common/CardList'
 import HomeSlide from '../../component/01-home/HomeSlide'
 import CategoryLink from '../../component/01-home/CategoryLink';
+import DataLoading from '../../component/_common/DataLoading';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import '../../styles/01-home/home.scss'
 
 function Home() {
+  const [loading, setLoading] = useState(true); // 데이터 로딩
   const [allItem, setAllItem] = useState([]);
   const [mainctgrName, setMainCtgrName] = useState([]);
   const [newCtgrName, setNewCtgrName] = useState([]);
@@ -107,8 +109,57 @@ function Home() {
         const createdAt = new Date().getTime(); //현재 시각ms
         localStorage.setItem('ripo-main', JSON.stringify({main: sliceHome, createdAt})); // sliceFood, mainFoodPick은 배열이니까 쿠키에 직접 저장이 되지 않아 문자열로 변경하여 저장
     }
-
   }, [allItem]);
+
+  useEffect(()=>{
+    (function () {
+      'use strict';
+    
+      const pastel = {
+        purple: 'color:#BB9EE5;font-size:13px;font-weight:bold;',
+        lightPurple: 'color:#C9B6E4;font-size:13px;',
+        lightBlue: 'color:#D0EFFF;font-size:13px;',
+        title: 'background: #D0EFFF; color: #C9B6E4; font-size:14px; font-weight:bold; padding:2px 6px; border-radius:6px;',
+        line: 'color:#E0D9F7;font-size:13px;',
+        tag: 'color:#C9B6E4;font-size:12px;font-style:italic;',
+      };
+
+      const date = new Date().toLocaleDateString();
+    
+      if (typeof console === 'object' && console.log) {
+        console.clear(); // 깔끔하게 시작
+    
+        console.log(`%c╭────────────╮`, pastel.purple);
+        console.log(`%c│    🌈 My Ripo Diary  │`, pastel.purple);
+        console.log(`%c├─────────────┤`, pastel.line);
+        console.log(`%c│ Date : ${date}      │`, pastel.lightPurple);
+        console.log(`%c│ Mood : Calm & Cute       │`, pastel.lightPurple);
+        console.log(`%c│ Note :                   │`, pastel.lightPurple);
+        console.log(`%c│  Welcome to Ripo!        │`, pastel.lightPurple);
+        console.log(`%c│  좋아하는 모든 것을,     │`, pastel.lightPurple);
+        console.log(`%c│  기록하는 방법           │`, pastel.lightPurple);
+        console.log(`%c╰────────────╯`, pastel.purple);
+    
+        console.log(`%c♥ Visit Ripo → https://your-ripo-link.com`, pastel.purple);
+        console.log(`%c#stationery  #cute  #diary  #Ripo`, pastel.tag);
+      }
+    })();
+  },[])
+
+  useEffect(()=>{
+    if(mainSlideItem !== null){
+      const timer = setTimeout(()=>{
+        setLoading(false);
+      },700);
+      return ()=>clearTimeout(timer);
+    }
+  },[mainSlideItem]);
+
+  if(loading){
+    return(
+      <DataLoading/>
+    )
+  }
   
   return (
     <div className='home'>

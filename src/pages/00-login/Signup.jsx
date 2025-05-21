@@ -43,6 +43,7 @@ function Signup() {
   function join(e){
     e.preventDefault();
 
+
     const formdata = new FormData();
     formdata.append('name',jointext1);
     formdata.append('id',jointext2);
@@ -55,8 +56,6 @@ function Signup() {
       }
     })
       // 내꺼 닷홈 사이트 http://yeon.dothome.co.kr/admin/api/member.php
-      .then(res=>{console.log(res.data);
-    })
   }
 
   return (
