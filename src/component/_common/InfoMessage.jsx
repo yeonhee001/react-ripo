@@ -37,6 +37,11 @@ function InfoMessage({type}) {
             리포가 전화로 친절하게 도와드릴게요!`,
       subtxt: `[마이페이지 > 전화걸기] 에서 바로 연결할 수 있어요.  
                자주 묻는 질문도 참고해보세요.`
+    },
+    noproduct: {
+      icon: <EmptyIcon className={'noempty'}/>,
+      txt: '텅',
+      subtxt: `앗! 해당 상품이 삭제되었거나 존재하지 않아요.`
     }
   }
   return (

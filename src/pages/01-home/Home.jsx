@@ -147,7 +147,10 @@ function Home() {
       </Swiper>
 
       <div className='home-item-box'>
-        <p className='home-item-box-title'>🆕 새로 나왔어요!</p>
+        <div className='home-item-box-title'>
+          <p><img src="/imgs/new.svg" alt="newIcon" /></p>
+          <span>새로 나왔어요!</span>
+        </div>
         <CardList data={newSlideItem} type={newCtgrName} rows={2} slidesPerView={2.6}/>
       </div>
 

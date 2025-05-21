@@ -28,8 +28,10 @@ function Header() {
     head = <img src='/imgs/logo.svg' alt=''/>;
   } else if (pathname==='/search' || pathname==='/category' || pathname==='/cart' || pathname==='/my' || pathname==='/splash') {
     head = "";
-  }else if (pathname==='/pay/done' || pathname==='/my/orderlist') {
+  } else if (pathname==='/pay/done' || pathname==='/my/orderlist') {
     head = <CloseIcon className={'closeicon'} onClick={handleCloseIcon}/>;
+  } else if (pathname.includes('searchdetail')) {
+    head = "";
   } else {
     head = <BackIcon className={'backicon'} onClick={()=>navigate(-1)}/>;
   }

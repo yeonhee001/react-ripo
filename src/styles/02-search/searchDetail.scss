@@ -1,4 +1,25 @@
 .search-detail{padding-bottom: 135px;}
+
+.search-detail-bar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // gap: 15px;
+    gap: 10px;
+    .bar-backicon{cursor: pointer;}
+    span{
+        display: inline-block;
+        font-size: 14px;
+        // border: 1px solid #999;
+        border: 1px solid #9257E9;
+        color: #9257E9;
+        // background-color: #C9B6E4;
+        // color: white;
+        padding: 9.5px 12px;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}
 .search-detail-msg{
     margin: 32px 0 16px;
     > span{color: #C9B6E4; font-family: 'S-CoreDream-5Medium';}

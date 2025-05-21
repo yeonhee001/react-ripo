@@ -17,25 +17,26 @@ function SearchPage() {
 
   return (
     <div className='search-page'>
-      <SearchBar 
-        placeholder={"어떤 상품을 찾아볼까?"} submitbtn={<SearchIconPurple className={'search-btn'}/>}
-        value={searchInput} onChange={(e)=>setSearchInput(e.target.value)}
-        onSubmit={(e)=>{
-          e.preventDefault();
-          if (searchInput.trim()) {
-            wordClick(searchInput);
-          }
-        }}/>
-
-      <h2 className='search-title'>추천 키워드</h2>
-
       <div>
-        {
-          keyword.map((item, i) => 
-            <SearchKeyword key={i} word={item} onClick={()=>wordClick(item)}/>
-          )
-        }
+        <SearchBar
+          placeholder={"어떤 상품을 찾아볼까?"} submitbtn={<SearchIconPurple className={'search-btn'}/>}
+          value={searchInput} onChange={(e)=>setSearchInput(e.target.value)}
+          onSubmit={(e)=>{
+            e.preventDefault();
+            if (searchInput.trim()) {
+              wordClick(searchInput);
+            }
+          }}/>
+        <h2 className='search-title'>추천 키워드</h2>
+        <div>
+          {
+            keyword.map((item, i) =>
+              <SearchKeyword key={i} word={item} onClick={()=>wordClick(item)}/>
+            )
+          }
+        </div>
       </div>
+      <div className='search-img'><img src="/imgs/search.svg" alt="search" /></div>
     </div>
   )
 }

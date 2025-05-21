@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import CardItem from '../../component/_common/CardItem';
 import SearchBar from '../../component/02-search/SearchBar';
 import SearchIconPurple from '../../component/icons/SearchIconPurple';
-import '../../styles/02-search/searchDetail.scss';
 import InfoMessage from '../../component/_common/InfoMessage';
+import '../../styles/02-search/searchDetail.scss';
 
 function SearchDetail() {
   const navi = useNavigate();
@@ -49,14 +49,18 @@ function SearchDetail() {
 
   return (
     <div className='search-detail'>
-      <SearchBar 
-        placeholder={"어떤 상품을 찾아볼까?"} submitbtn={<SearchIconPurple className={'search-btn'}/>}
-        value={tempInput} onChange={(e)=>setSearchInput(e.target.value)}
-        onSubmit={(e)=>{
-          e.preventDefault();
-          if (!tempInput.trim()) return; // 빈 값 방지
-          navi(`/search/searchdetail/${encodeURIComponent(tempInput)}`);
-        }}/>
+      <div className='search-detail-bar'>
+        {/* <BackIcon className={'bar-backicon'} onClick={() => navi(-1)}/> */}
+        <SearchBar 
+          placeholder={"어떤 상품을 찾아볼까?"} submitbtn={<SearchIconPurple className={'search-btn'}/>}
+          value={tempInput} onChange={(e)=>setTempInput(e.target.value)}
+          onSubmit={(e)=>{
+            e.preventDefault();
+            if (!tempInput.trim()) return; // 빈 값 방지
+            navi(`/search/searchdetail/${encodeURIComponent(tempInput)}`);
+          }}/>
+        <span onClick={() => navi('/search')}>취소</span>
+      </div>
 
       {items.length === 0 ? (
         <InfoMessage type={'nosearch'}/>
