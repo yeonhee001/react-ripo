@@ -4,6 +4,7 @@ import RecordIcon from '../../component/icons/RecordIcon';
 import CategorySub from '../../component/03-category/CategorySub';
 import WriteIcon from '../../component/icons/WriteIcon';
 import '../../styles/03-category/category.scss'
+import BtnShort from '../../component/_common/BtnShort';
 
 function Category() {
   const [catData, setCatData] = useState([]);
@@ -44,6 +45,7 @@ function Category() {
           </div>
         ))
       }
+      <BtnShort className={'all-product-btn'} fillType={'all'} fillTo={'/product/all'}/>
     </div>
   )
 }
