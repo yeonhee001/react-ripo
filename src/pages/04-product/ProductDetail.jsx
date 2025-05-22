@@ -19,7 +19,7 @@ function ProductDetail() {
   
   const [loading, setLoading] = useState(true); // 데이터 로딩
   const [selectedTab, setSelectedTab] = useState(0);
-  const [productData, setProductData] = useState(null);
+  const [productData, setProductData] = useState(undefined);  // 로딩중일 때는 undefined, 없으면 null
   const [categorySub, setCategorySub] = useState(null);
   const [categoryMain, setCategoryMain] = useState(null);
   const [notFound, setNotFound] = useState(false);
@@ -29,8 +29,10 @@ function ProductDetail() {
   useEffect(()=>{
     axios.get('http://localhost/admin/api/p_list.php')
     .then(res=>{
+      if(!res.data){setProductData(null)}
       const matchedProduct = res.data.find(product => String(product.id) === String(id));
       if(!matchedProduct) {
+        setProductData(null)
         setNotFound(true)
         return;
       }
@@ -46,6 +48,7 @@ function ProductDetail() {
         // 카테고리명과 URL 내 type 비교 (소카테고리명 비교)
         if (matchedItem.cat_name !== type) {
           // 불일치
+          setProductData(null)
           setNotFound(true);
           return;
         }
@@ -66,7 +69,12 @@ function ProductDetail() {
   const imgArr = productData?.p_thumb.split(',');
 
   useEffect(()=>{
-    if(productData !== null){
+    if (productData === undefined) return; // 데이터 아직 안 들어온 초기 상태는 무시
+
+    if(productData === null){
+      setLoading(false);
+      setNotFound(true);
+    } else {
       const timer = setTimeout(()=>{
         setLoading(false);
       },300);
