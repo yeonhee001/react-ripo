@@ -14,7 +14,6 @@ function Pay() {
   const navi = useNavigate();
   const location = useLocation();
   const payData = location.state; // 상품 디테일 페이지에서 보내준 state
-  // const [userInfo, setUserInfo] = useState([]);
   const [typeSelect, setTypeSelect] = useState('card');
   const [formData, setFormData] = useState({
     name: '',
@@ -28,7 +27,12 @@ function Pay() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [delivery, setDelivery] = useState(0);
   const [totalOrder, setTotalOrder] = useState(0);
+  const [productCount, setProductCount] = useState(0);
   
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
+
   useEffect(() => {
     if(payData?.items){
       const items = payData.items;
@@ -37,9 +41,13 @@ function Pay() {
       const recalculatedTotalPrice = items.reduce((acc, item) => 
         acc + Number(item.p_price), 0
       );
+      const totalEa = items.reduce((acc, item) => 
+        acc + Number(item.p_ea), 0
+      );
 
       setProduct(items);
       setTotalPrice(recalculatedTotalPrice);
+      setProductCount(totalEa);
       setDelivery(payData.delivery ?? 0);
       setTotalOrder(recalculatedTotalPrice + (payData.delivery) ?? 0);
     } else if(payData?.p_id){
@@ -55,14 +63,11 @@ function Pay() {
         cat_id: payData.cat_id
       }]);
       setTotalPrice(pricePerUnit);
+      setProductCount(ea);
       setDelivery(2500);
       setTotalOrder(pricePerUnit + 2500);
     }
   }, [payData]);
-
-  useEffect(()=>{
-    window.scrollTo(0,0);
-  },[])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -222,7 +227,7 @@ function Pay() {
       </div>
 
       <PayDoneBar className={'pay-top'} titleClassName={'pay-title'} title={'결제 금액'}/>
-      <ProductPrice className={'pay-productprice01'} titleClassName={'pay-title01'} priceClassName={'pay-price01'} title={'총 상품금액(개)'} price={totalPrice.toLocaleString()}/>
+      <ProductPrice className={'pay-productprice01'} titleClassName={'pay-title01'} priceClassName={'pay-price01'} title={`총 상품금액(${productCount}개)`} price={totalPrice.toLocaleString()}/>
       <ProductPrice className={'pay-productprice01'} titleClassName={'pay-title01'} priceClassName={'pay-price01'} title={'총 배송비'} price={delivery.toLocaleString()}/>
       <ProductPrice className={'pay-productprice02'} titleClassName={'pay-title02'} priceClassName={'pay-price02'} title={'총 주문금액'} price={totalOrder.toLocaleString()}/>
 

@@ -34,6 +34,13 @@ function My() {
 
   
   useEffect(()=>{
+    const memId = sessionStorage.getItem('mem_id');
+
+    if(!memId){
+      navi('/login');
+      return;
+    }
+
     axios.get("http://localhost/admin/api/mypage.php",{
       withCredentials: true, // 세션 유지하려면 반드시 포함!
     })

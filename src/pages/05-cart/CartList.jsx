@@ -57,6 +57,8 @@ function CartList() {
   // reduce는 배열의 값을 하나로 만들기, 0은 acc 초기값을 0으로 설정
   const formatTotal = (price)=>price.toLocaleString('ko-KR');
 
+  // 선택한 상품의 수 보여주기
+  const selectCount = Object.values(checkItems).filter(Boolean).length;
 
   // 서버에서 장바구니 목록 가져와서 로컬스토리지에 저장
   useEffect(()=>{
@@ -87,7 +89,7 @@ function CartList() {
   }, []);
 
 
-
+  // 추천상품에 보여줄 상품 리스트 가져오기
   useEffect(()=>{
     axios.get('http://localhost/admin/api/p_list.php')
     .then(res=>{
@@ -96,6 +98,7 @@ function CartList() {
   },[])
   const productList = addList.slice(-8);
 
+  // 카테고리 정보 가져오기
   useEffect(()=>{
     axios.get('http://localhost/admin/api/category.php')
     .then(res=>{
@@ -179,6 +182,7 @@ function CartList() {
     });
   }
 
+  // 로딩처리
   useEffect(()=>{
     if(cartList !== null){
       const timer = setTimeout(()=>{
@@ -220,7 +224,7 @@ function CartList() {
             </div>
 
             <div className='cart-productprice'>
-              <ProductPrice className={'cart-productprice01'} titleClassName={'cart-title01'} priceClassName={'cart-price01'} title={'총 상품금액(개)'} price={formatTotal(totalPrice)}/>
+              <ProductPrice className={'cart-productprice01'} titleClassName={'cart-title01'} priceClassName={'cart-price01'} title={`총 상품금액(${selectCount}개)`} price={formatTotal(totalPrice)}/>
               <ProductPrice className={'cart-productprice01'} titleClassName={'cart-title01'} priceClassName={'cart-price01'} title={'총 배송비'} price={totalPrice > 0 ? '2,500' : '0'}/>
               <ProductPrice className={'cart-productprice02'} titleClassName={'cart-title02'} priceClassName={'cart-price02'} title={'총 주문금액'} price={formatTotal(totalPrice + (totalPrice > 0 ? 2500 : 0))}/>
             </div>
