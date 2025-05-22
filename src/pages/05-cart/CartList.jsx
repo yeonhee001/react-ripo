@@ -58,8 +58,10 @@ function CartList() {
   const formatTotal = (price)=>price.toLocaleString('ko-KR');
 
   // 선택한 상품의 수 보여주기
-  const selectCount = Object.values(checkItems).filter(Boolean).length;
-
+  const selectCount = cartList
+  .filter(item => checkItems[item.id])
+  .reduce((sum, item) => sum + (Number(item.p_ea) || 0), 0);  
+  
   // 서버에서 장바구니 목록 가져와서 로컬스토리지에 저장
   useEffect(()=>{
     const memId = sessionStorage.getItem('mem_id');
