@@ -46,6 +46,7 @@ function Home() {
   useEffect(()=>{
     axios.get(`${process.env.REACT_APP_APIURL}/api/p_list.php`)
     .then(res=>{
+      console.log(res.data)
       const newItem01 = res.data.slice(-4);
       const newItem02 = res.data.slice(-8, -4);
       setNewSlideItem([...newItem01, ...newItem02]);
