@@ -24,3 +24,18 @@
     margin: 32px 0 16px;
     > span{color: #C9B6E4; font-family: 'S-CoreDream-5Medium';}
 }
+
+.search-detail-topicon{
+    position: fixed;
+    right: calc((100vw - 480px) / 2 + 18px); bottom: 86px;
+    cursor: pointer;
+}
+
+
+
+
+@media (max-width: 480px) {
+    .search-detail-topicon{
+        right: 18px !important;
+    }
+}

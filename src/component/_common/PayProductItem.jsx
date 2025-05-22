@@ -1,11 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function PayProductItem({type, id, imgurl, title, num, price}) {
+function PayProductItem({type, id, imgurl, title, num, price, click=false}) {
 
   const navi = useNavigate();
   function goToDetailPage(){
-    navi(`/product/${type}/${id}`)
+    if(click){
+      navi(`/product/${type}/${id}`)
+    }
   };
 
   return (

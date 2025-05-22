@@ -24,6 +24,9 @@ function BtnShort({className, lineType, fillType, lineTo, fillTo}) {
     },
     eyeshop: {
       txt: '구경하러 가기'
+    },
+    all: {
+      txt: '전체 상품 둘러보기'
     }
   }
 

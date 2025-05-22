@@ -8,7 +8,7 @@ function SignupForm({form, type, value, onChange, maxLength}) {
       id : 'userName',
       label : <>이름<sup style={{ position: 'relative', top: '-0.4em', fontSize: '0.6em' }}>*</sup></>,
       autoComplete : 'username',
-      warn : '필수! 이름을 입력해주세요'
+      warn : '필수! 이름을 입력해주세요.'
     },
     id: {
       id : 'userId',

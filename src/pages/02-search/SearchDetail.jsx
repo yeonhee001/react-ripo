@@ -5,6 +5,7 @@ import CardItem from '../../component/_common/CardItem';
 import SearchBar from '../../component/02-search/SearchBar';
 import SearchIconPurple from '../../component/icons/SearchIconPurple';
 import InfoMessage from '../../component/_common/InfoMessage';
+import TopIcon from '../../component/icons/TopIcon';
 import '../../styles/02-search/searchDetail.scss';
 
 function SearchDetail() {
@@ -66,7 +67,7 @@ function SearchDetail() {
         <InfoMessage type={'nosearch'}/>
       ) : (
         <p className='search-detail-msg'>
-          <span>{items.length}</span> 개의 {searchInput} 발견!
+          <span>{searchResult.length}</span> 개의 {searchInput} 발견!
         </p>
       )}
 
@@ -89,6 +90,8 @@ function SearchDetail() {
           ))
         }
       </div>
+
+      <TopIcon className={'search-detail-topicon'}/>
     </div>
   )
 }

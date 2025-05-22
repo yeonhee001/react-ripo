@@ -68,6 +68,7 @@ function OrderList() {
                     title={item.p_name}
                     num={item.p_ea}
                     price={item.p_price}
+                    click={true}
                   />
                 </React.Fragment>
               );
