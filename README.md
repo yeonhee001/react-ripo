@@ -10,7 +10,7 @@
 언제 어디서나 편리하게 사용할 수 있도록 구현하였습니다.
 
 ## 🔗 배포 URL
-https://
+https://ripo-tau.vercel.app
 
 ## 📑 프로젝트 요약
 
