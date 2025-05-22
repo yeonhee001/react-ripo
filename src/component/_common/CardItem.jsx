@@ -12,7 +12,7 @@ function CardItem({ type, imgurl, name, price, id }) {
   return (
     <>
       <figure onClick={goToDetailPage}>
-        <img src={`http://localhost/admin/product/upload/${firstImg}`} alt="img" />
+        <img src={`${process.env.REACT_APP_APIURL_IMG}/${firstImg}`} alt="img" />
         <figcaption>
           <p>{name}</p>
           <span>{Number(price).toLocaleString()}</span>

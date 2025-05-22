@@ -67,7 +67,7 @@ function CartList() {
     const memId = sessionStorage.getItem('mem_id');
     if(!memId) return;
     
-    axios.get(`http://localhost/admin/api/cart.php?mem_id=${memId}`)
+    axios.get(`${process.env.REACT_APP_APIURL}/cart.php?mem_id=${memId}`)
     .then(res=>{
       setCartList(res.data);
       localStorage.setItem('cart', JSON.stringify(res.data));
@@ -93,7 +93,7 @@ function CartList() {
 
   // 추천상품에 보여줄 상품 리스트 가져오기
   useEffect(()=>{
-    axios.get('http://localhost/admin/api/p_list.php')
+    axios.get(`${process.env.REACT_APP_APIURL}/p_list.php`)
     .then(res=>{
       setAddList(res.data);
     })
@@ -102,7 +102,7 @@ function CartList() {
 
   // 카테고리 정보 가져오기
   useEffect(()=>{
-    axios.get('http://localhost/admin/api/category.php')
+    axios.get(`${process.env.REACT_APP_APIURL}/category.php`)
     .then(res=>{
       const matchCartCtgr = cartList.map(item=>{
         const ctgr = res.data.find(p => String(p.id) === String(item.cat_id));
@@ -123,7 +123,7 @@ function CartList() {
     const selected = Object.keys(checkItems).filter(id=>checkItems[id]).map(id=>Number(id));
     // 선택삭제를 위한 선택된 id 항목 찾기, 체크된 아이디 찾아서 문자열이면 숫자로 변경
 
-    axios.post('http://localhost/admin/api/cart_delete.php', {ids: selected },
+    axios.post(`${process.env.REACT_APP_APIURL}/cart_delete.php`, {ids: selected },
       {headers: { 'Content-Type': 'application/json' }}
     )
     .then(res=>{
@@ -132,7 +132,7 @@ function CartList() {
         const memId = sessionStorage.getItem('mem_id');
         if(!memId) return;
 
-        axios.get(`http://localhost/admin/api/cart.php?mem_id=${memId}`)
+        axios.get(`${process.env.REACT_APP_APIURL}/cart.php?mem_id=${memId}`)
           .then(res => {
             setCartList(res.data);
 
@@ -150,7 +150,7 @@ function CartList() {
   
   // 개별 삭제 관련
   const deleteItem = async(id)=>{
-    axios.post('http://localhost/admin/api/cart_delete.php', {ids: [id]},
+    axios.post(`${process.env.REACT_APP_APIURL}/cart_delete.php`, {ids: [id]},
       {headers: { 'Content-Type': 'application/json' }}
     )
     .then(res=>{

@@ -44,7 +44,7 @@ function Home() {
 
   // 모든 상품 데이터 가져오기
   useEffect(()=>{
-    axios.get('http://localhost/admin/api/p_list.php')
+    axios.get(`${process.env.REACT_APP_APIURL}/p_list.php`)
     .then(res=>{
       const newItem01 = res.data.slice(-4);
       const newItem02 = res.data.slice(-8, -4);
@@ -58,7 +58,7 @@ function Home() {
   useEffect(()=>{
     if (mainSlideItem === null) return;
 
-    axios.get('http://localhost/admin/api/category.php')
+    axios.get(`${process.env.REACT_APP_APIURL}/category.php`)
     .then(res => {
       // 메인 슬라이드
       const matchedCategories = mainSlideItem.map(item => {

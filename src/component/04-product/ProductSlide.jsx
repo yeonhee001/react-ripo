@@ -4,7 +4,7 @@ function ProductSlide({ imgurl }) {
 
   return (
     <p className='productslide-img'>
-        <img src={`http://localhost/admin/product/upload/${imgurl}`} alt="상품디테일-img" />
+        <img src={`${process.env.REACT_APP_APIURL_IMG}/${imgurl}`} alt="상품디테일-img" />
     </p>
   )
 }

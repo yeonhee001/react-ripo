@@ -17,7 +17,7 @@ function My() {
   };
 
   const logoutConfirm = ()=>{
-    axios.get("http://localhost/admin/api/logout.php",{
+    axios.get(`${process.env.REACT_APP_APIURL}/logout.php`,{
       withCredentials: true, // 세션 유지하려면 반드시 포함!
     })
     .then(res=>{
@@ -41,7 +41,7 @@ function My() {
       return;
     }
 
-    axios.get("http://localhost/admin/api/mypage.php",{
+    axios.get(`${process.env.REACT_APP_APIURL}/mypage.php`,{
       withCredentials: true, // 세션 유지하려면 반드시 포함!
     })
     .then(res=>{
