@@ -5,7 +5,7 @@
       "destination": "http://yeon.dothome.co.kr/admin/api/:match*"
     },
     {
-      "source": "/upload/:match*",
+      "source": "/admin/product/upload/:match*",
       "destination": "http://yeon.dothome.co.kr/admin/product/:match*"
     }
   ]
