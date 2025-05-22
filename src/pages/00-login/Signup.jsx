@@ -50,7 +50,7 @@ function Signup() {
     formdata.append('password',jointext3);
     formdata.append('tel',jointext4);
     formdata.append('email',jointext5);
-    axios.post(`${process.env.REACT_APP_APIURL}/member.php`,formdata,{
+    axios.post(`${process.env.REACT_APP_APIURL}/api/member.php`,formdata,{
       headers: {
         'Content-Type': 'multipart/form-data',
       }

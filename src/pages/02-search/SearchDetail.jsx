@@ -19,7 +19,7 @@ function SearchDetail() {
 
   // 모든 상품 데이터 가져오기
   useEffect(()=>{
-    axios.get(`${process.env.REACT_APP_APIURL}/p_list.php`)
+    axios.get(`${process.env.REACT_APP_APIURL}/api/p_list.php`)
     .then(res=>{
       setSearchInput(word);
       setTempInput(word);
@@ -34,7 +34,7 @@ function SearchDetail() {
   useEffect(()=>{
     if (searchResult === null) return;
 
-    axios.get(`${process.env.REACT_APP_APIURL}/category.php`)
+    axios.get(`${process.env.REACT_APP_APIURL}/api/category.php`)
     .then(res => {
       const matchedCategories = searchResult.map(item => {
         return res.data.find(ctgr => String(ctgr.id) === String(item.cat_id));

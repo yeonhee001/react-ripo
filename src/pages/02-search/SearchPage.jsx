@@ -42,7 +42,7 @@ function SearchPage() {
     setRecents(parsed);
 
     // 모든 카테고리 가져와 최근 본 상품 데이터의 카테고리 id값과 일치하는 카테고리의 name 가져오기
-    axios.get(`${process.env.REACT_APP_APIURL}/category.php`)
+    axios.get(`${process.env.REACT_APP_APIURL}/api/category.php`)
     .then(res => {
       const matchedCategories = parsed.map(item => {
         const match = res.data.find(ctgr => String(ctgr.id) === String(item.cat_id));

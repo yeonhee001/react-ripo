@@ -109,7 +109,7 @@ function Pay() {
       catid: item.cat_id
     }));
 
-    axios.post(`${process.env.REACT_APP_APIURL}/orders.php`,orderData,{
+    axios.post(`${process.env.REACT_APP_APIURL}/api/orders.php`,orderData,{
       headers: { 'Content-Type': 'application/json' }
     })
     .then(res=>{
@@ -122,7 +122,7 @@ function Pay() {
         const updateCart = cartget.filter(item => !purchasedIds.includes(item.id));
         localStorage.setItem('cart', JSON.stringify(updateCart));
 
-        axios.post(`${process.env.REACT_APP_APIURL}/cart_delete.php`, { ids: purchasedIds }, {
+        axios.post(`${process.env.REACT_APP_APIURL}/api/cart_delete.php`, { ids: purchasedIds }, {
           headers: { 'Content-Type': 'application/json' }
         });
       }
@@ -137,7 +137,7 @@ function Pay() {
     const memId = sessionStorage.getItem('mem_id');
     if(!memId) return;
 
-    axios.get(`${process.env.REACT_APP_APIURL}/member.php?mem_id=${memId}`)
+    axios.get(`${process.env.REACT_APP_APIURL}/api/member.php?mem_id=${memId}`)
     .then(res=>{
       const data = res.data[0];
       // setUserInfo(data);
