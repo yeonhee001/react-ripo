@@ -61,7 +61,7 @@ function BottomBarExpanded({ isOpen, setIsOpen, data, onAddToCart }) {
                 }
 
                 // console.log(putData);
-                axios.put('http://localhost/admin/api/cart.php', putData)
+                axios.put(`${process.env.REACT_APP_APIURL}/api/cart.php`, putData)
                 .then(() => {onAddToCart('add');})
                 .catch(() => {onAddToCart('error');});
 
@@ -79,7 +79,7 @@ function BottomBarExpanded({ isOpen, setIsOpen, data, onAddToCart }) {
                 
                 // console.log('서버에 저장함!', cartData);
                 
-                axios.post('http://localhost/admin/api/cart.php', cartData)
+                axios.post(`${process.env.REACT_APP_APIURL}/api/cart.php`, cartData)
                 .then(() => {onAddToCart('add');})
                 .catch(() => {onAddToCart('error');});
 

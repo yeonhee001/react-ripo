@@ -46,7 +46,6 @@ function Home() {
   useEffect(()=>{
     axios.get(`${process.env.REACT_APP_APIURL}/api/p_list.php`)
     .then(res=>{
-      console.log(res.data)
       const newItem01 = res.data.slice(-4);
       const newItem02 = res.data.slice(-8, -4);
       setNewSlideItem([...newItem01, ...newItem02]);
@@ -62,7 +61,6 @@ function Home() {
     axios.get(`${process.env.REACT_APP_APIURL}/api/category.php`)
     .then(res => {
       // 메인 슬라이드
-      console.log(res.data)
       const matchedCategories = mainSlideItem.map(item => {
         return res.data.find(ctgr => String(ctgr.id) === String(item.cat_id));
       });
