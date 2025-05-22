@@ -59,7 +59,7 @@ function Home() {
   useEffect(()=>{
     if (mainSlideItem === null) return;
 
-    axios.get(`/api/category.php`)
+    axios.get(`${process.env.REACT_APP_APIURL}/api/category.php`)
     .then(res => {
       // 메인 슬라이드
       console.log(res.data)
