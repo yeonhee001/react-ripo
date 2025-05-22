@@ -57,7 +57,7 @@ function ProductList() {
       }
     })
     .catch(e => console.error('카테고리 데이터 불러오기 실패', e));
-}, [ctgrItem]);
+}, [ctgrItem, type]);
 
   // 아이템의 개수가 홀수일 경우 빈 박스 추가하여 리스트 2줄 유지. 
   const items = [...listItem];

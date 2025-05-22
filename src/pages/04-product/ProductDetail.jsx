@@ -20,6 +20,7 @@ function ProductDetail() {
   const [loading, setLoading] = useState(true); // 데이터 로딩
   const [selectedTab, setSelectedTab] = useState(0);
   const [productData, setProductData] = useState(undefined);  // 로딩중일 때는 undefined, 없으면 null
+  const [categoryItem, setCategoryItem] = useState(null);
   const [categorySub, setCategorySub] = useState(null);
   const [categoryMain, setCategoryMain] = useState(null);
   const [notFound, setNotFound] = useState(false);
@@ -43,17 +44,19 @@ function ProductDetail() {
         if (!matchedProduct || matchedProduct === 'null') return;
         
         const matchedItem = catRes.data.find(item => String(item.id) === String(matchedProduct.cat_id));
-        if (!matchedItem) return;
-        
-        // 카테고리명과 URL 내 type 비교 (소카테고리명 비교)
-        if (matchedItem.cat_name !== type) {
-          // 불일치
-          setProductData(null)
-          setNotFound(true);
-          return;
-        }
 
+        if (!matchedItem) return;
+
+        if (type !== 'all') {
+          if (matchedItem.cat_name !== type) {
+            setProductData(null);
+            setNotFound(true);
+            return;
+          }
+        }
+        
         // 일치할 경우 상태 업데이트
+        setCategoryItem(matchedItem);
         setProductData(matchedProduct);
         
         const matchedSub = catRes.data.find(item => String(item.id) === String(matchedItem.cat_parent));
@@ -64,10 +67,28 @@ function ProductDetail() {
         setCategoryMain(matchedMain);
       })
     })
-  },[id])
+  },[type, id])
+
+  // 최근 본 상품 저장 (로컬스토리지)
+  useEffect(()=>{
+    if(!productData) return;
+
+    const viewed = JSON.parse(localStorage.getItem('recentProducts')) || [];
+    
+    // 같은 id 상품이 이미 있으면 삭제 (중복 방지)
+    const filtered = viewed.filter(item => item.id !== productData.id);
+
+    // 가장 최근 본 상품이 앞으로 오도록
+    const updated = [productData, ...filtered];
+
+    // 최근 본 상품은 최대 8개까지만 저장
+    localStorage.setItem('recentProducts', JSON.stringify(updated.slice(0, 8)));
+  },[productData])
   
+  // 이미지 배열
   const imgArr = productData?.p_thumb.split(',');
 
+  // 로딩 처리
   useEffect(()=>{
     if (productData === undefined) return; // 데이터 아직 안 들어온 초기 상태는 무시
 
@@ -114,7 +135,7 @@ function ProductDetail() {
             </Swiper>
             <div className='productdetail-info-txt'>
               <span className='productdetail-info-txt-category'>
-                {`${categoryMain?.cat_name} > ${categorySub?.cat_name} > ${type}`}
+                {`${categoryMain?.cat_name} > ${categorySub?.cat_name} > ${categoryItem?.cat_name}`}
               </span>
               <p>{productData?.p_name}</p>
               <span className='productdetail-info-txt-price'>
