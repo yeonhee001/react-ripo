@@ -140,7 +140,7 @@ function Home() {
         console.log(`%c│  기록하는 방법           │`, pastel.lightPurple);
         console.log(`%c╰────────────╯`, pastel.purple);
     
-        console.log(`%c♥ Visit Ripo → https://ripo-tau.vercel.app/`, pastel.purple);
+        console.log(`%c♥ Visit Ripo → https://ripo-tau.vercel.app`, pastel.purple);
         console.log(`%c#stationery  #cute  #diary  #Ripo`, pastel.tag);
       }
     })();
