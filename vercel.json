@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/api/:match*",
-      "destination": "http://yeon.dothome.co.kr/admin/api/:match*"
+      "destination": "http://yeon.dothome.co.kr/admin/:match*"
     },
     {
       "source": "/:match*",
