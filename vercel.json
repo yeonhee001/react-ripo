@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/:match*",
+      "destination": "http://yeon.dothome.co.kr/admin/api/:match*"
+    },
+    {
+      "source": "/:match*",
+      "destination": "http://yeon.dothome.co.kr/admin/product/upload/:match*"
+    }
+  ]
+}

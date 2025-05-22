@@ -13,7 +13,7 @@ function OrderList() {
   useEffect(()=>{
     const memId = sessionStorage.getItem('mem_id');
 
-    axios.get(`http://localhost/admin/api/orders.php?mem_id=${memId}`)
+    axios.get(`${process.env.REACT_APP_APIURL}/orders.php?mem_id=${memId}`)
     .then(res=>{
       setOrderList(res.data);
     })
@@ -27,7 +27,7 @@ function OrderList() {
   useEffect(() => {
     if(orderList.length === 0) return;  // orderList가 비어있으면 실행 안함
 
-    axios.get('http://localhost/admin/api/category.php')
+    axios.get(`${process.env.REACT_APP_APIURL}/category.php`)
       .then(res => {
         const matchCtgr = orderList.map(item => {
           const ctgr = res.data.find(p => String(p.id) === String(item.cat_id));

@@ -29,7 +29,7 @@ function Login() {
     formdata.append('id',text1);
     formdata.append('pw',text2);
 
-    axios.post("http://localhost/admin/api/login.php",formdata,{
+    axios.post(`${process.env.REACT_APP_APIURL}/login.php`,formdata,{
       headers: {
         'Content-Type': 'multipart/form-data',
       },

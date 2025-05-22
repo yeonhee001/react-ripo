@@ -18,7 +18,7 @@ function CartItem({onClick, type, id, imgurl, title, num, price, checked, onChan
         <div className='cart-check'>
           <AgreeCheck className={'cart-mui-check'} checked={checked} onChange={onChange}/>
         </div>
-        <img src={`http://localhost/admin/product/upload/${imgurl}`} alt="cart-product" />
+        <img src={`${process.env.REACT_APP_APIURL_IMG}/${imgurl}`} alt="cart-product" />
       </div>
       <div className='cart-checkinfo' onClick={goto}>
         <b>{title}</b>

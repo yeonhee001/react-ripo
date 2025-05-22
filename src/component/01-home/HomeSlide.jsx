@@ -8,7 +8,7 @@ function HomeSlide({ imgurl, name, type, id }) {
     <div>
         <NavLink to={`/product/${type}/${id}`}>
             <p className='home-mainimg'>
-                <img src={`http://localhost/admin/product/upload/${firstImg}`} alt="메인슬라이드-img" />
+                <img src={`${process.env.REACT_APP_APIURL_IMG}/${firstImg}`} alt="메인슬라이드-img" />
             </p>
             <div className='home-main-text'>
                 <p>{name}</p>

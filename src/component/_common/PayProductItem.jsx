@@ -13,7 +13,7 @@ function PayProductItem({type, id, imgurl, title, num, price, click=false}) {
   return (
     <div className='payproductitem' onClick={goToDetailPage}>
       <p className='productitem-img'>
-        <img src={`http://localhost/admin/product/upload/${imgurl}`} alt="productimg" />
+        <img src={`${process.env.REACT_APP_APIURL_IMG}/${imgurl}`} alt="productimg" />
       </p>
       <div className='productitem-text'>
         <b>{title}</b>

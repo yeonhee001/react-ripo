@@ -10,7 +10,7 @@ function Category() {
   const [catData, setCatData] = useState([]);
 
   useEffect(()=>{
-    axios.get('http://localhost/admin/api/category.php')
+    axios.get(`${process.env.REACT_APP_APIURL}/category.php`)
     .then(res=>{
       setCatData(res.data)
     })

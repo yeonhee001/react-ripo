@@ -28,7 +28,7 @@ function ProductDetail() {
   
   // 모든 데이터 중 파라미터 id값과 일치하는 id값의 상품 데이터 가져오기.
   useEffect(()=>{
-    axios.get('http://localhost/admin/api/p_list.php')
+    axios.get(`${process.env.REACT_APP_APIURL}/p_list.php`)
     .then(res=>{
       if(!res.data){setProductData(null)}
       const matchedProduct = res.data.find(product => String(product.id) === String(id));
@@ -39,7 +39,7 @@ function ProductDetail() {
       }
 
       // 카테고리명 가져오기
-      axios.get('http://localhost/admin/api/category.php')
+      axios.get(`${process.env.REACT_APP_APIURL}/category.php`)
       .then(catRes=>{
         if (!matchedProduct || matchedProduct === 'null') return;
         
