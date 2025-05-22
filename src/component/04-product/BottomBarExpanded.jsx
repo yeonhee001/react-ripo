@@ -45,7 +45,7 @@ function BottomBarExpanded({ isOpen, setIsOpen, data, onAddToCart }) {
         }
 
         // 중복 확인
-        axios.get(`http://localhost/admin/api/cart.php?mem_id=${userId}`)
+        axios.get(`${process.env.REACT_APP_APIURL}/api/cart.php?mem_id=${userId}`)
         .then(res => {
             const cartList = res.data;
             
