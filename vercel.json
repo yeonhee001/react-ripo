@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/admin/api/:match*",
+      "source": "/api/:match*",
       "destination": "http://yeon.dothome.co.kr/admin/:match*"
     },
     {
