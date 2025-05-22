@@ -1,58 +1,82 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ✨ 소개
+좋아하는 모든 것을 기록하는 SPA 웹사이트, <b>"Ripo"</b> 입니다.
 
-## Available Scripts
+자신만의 일상과 감정을 감성적으로 기록하고 꾸밀 수 있는 공간을 제공하여, <br>
+소소한 순간들을 소중하게 남길 수 있도록 합니다. <br>
+또한, 일상을 기록하는 습관이 주는 즐거움과 그 의미를 널리 알리고자 기획하였습니다. <br>
 
-In the project directory, you can run:
+480px(모바일) 해상도에 최적화된 디자인을 적용하여, <br>
+언제 어디서나 편리하게 사용할 수 있도록 구현하였습니다.
 
-### `npm start`
+## 🔗 배포 URL
+https://
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📑 프로젝트 요약
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 1. 주제
 
-### `npm test`
+* 매일 기록하는 습관과 소소한 취향을 반영해, 자연스럽게 소비로 이어지는 감성적이고 귀여운 쇼핑 공간 제공
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2. 목표
 
-### `npm run build`
+* 타겟층의 취향을 고려한 제품 구성
+* 검색, 장바구니 기능 등 쇼핑 경험 개선을 통해 사용자 만족도 향상
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 3. 핵심 기능
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* SPA (Single Page Application) 기반으로 페이지 이동 없이 빠른 이용 경험 제공
+* 카테고리별 상품 리스트 및 상세 정보 제공
+* 사용자 맞춤 검색 기능
+* 장바구니를 통한 상품 보관 및 선택 결제 기능
+* 자주 묻는 질문 페이지 제공
+* 회원가입 및 로그인 기능
+* 마이페이지 주문 내역 관리
+* 모바일 480px
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 4. 주요 기술 스택
 
-### `npm run eject`
+* Front-End : React, React Router
+* Back-End : Node.js, PHP
+* Data-Base : MySQL
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 📆 기간 및 인원
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  * 총 작업 기간 : 7일
+    * 기초 데이터 수집 및 화면 설계 기간 : 2일
+    * 개발 및 테스트 기간 : 5일
+   
+  * 팀원 : 2명
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 👩🏻‍🤝‍🧑🏻 팀원 소개
 
 | 이름 | 주요 페이지 컴포넌트 | 해당 |
 | :---:| :---: | :---: |
-| 천지호 | Home.jsx, 검색(search 폴더), 카테고리(category 폴더), 상품 리스트 및 정보(product 폴더), Faq.jsx |  |
+| 천지호 | Home.jsx, 검색(search 폴더), 카테고리(category 폴더), 상품 정보(product 폴더), Faq.jsx |  |
 | 소연희 | Splash.jsx, 장바구니(cart 폴더), 결제(pay 폴더), 마이페이지(mypage 폴더), 로그인 및 회원가입(login 폴더) | ✔ |
 
-## Learn More
+## 💡 주요 기능
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 1. 회원가입 및 로그인
+* 기본 정보 입력을 통한 회원가입 기능
+* 로그인 후 마이페이지, 장바구니 등 개인화 기능 이용 가능
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2. 장바구니
+* 원하는 상품을 장바구니에 담아두고 한 번에 결제 가능
+* 선택한 상품만 결제할 수 있도록 체크박스 기능 제공
+* 선택 삭제 및 개별 삭제 기능 지원
+* 총 주문 금액 자동 계산
 
-### Code Splitting
+### 3. 검색
+* 키워드 기반 상품 검색 기능
+* 검색 결과 페이지에서 상품 리스트 확인 가능
+* 관련 키워드 기반 추천 키워드 기능으로 쉽게 검색 가능
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 4. 마이페이지
+* 주문 내역 확인 기능
+* 사용자들이 자주 찾는 질문 정리 후 FAQ 탭 구성
 
-### Analyzing the Bundle Size
+## 🗂️ 폴더 구조
 
 ```
 📂Ripo-Project
@@ -96,13 +120,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/c
 ┃ ┣ 📜login.php
 ┃ ┣ 📜logout.php
 ┃ ┣ 📜table.php
-┃ ┣ 📜style.css
-┗ ┗ ⚙️.env
+┗ ┗ 📜style.css
 ```
 
-### Making a Progressive Web App
+## 💻 개발 환경
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 1. Frond-End
 
 | 사용기술 | 설명 |Badge |
 | :---:| :---: | :---: |
@@ -122,7 +145,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/m
 | **Sass** | **스타일링**|![Sass](https://img.shields.io/badge/Sass-CC6699?style=flat-square&logo=Sass&logoColor=white)|
 | **sweetalert2** | **커스텀 팝업 알림 UI** |![sweetalert2](https://img.shields.io/badge/sweetalert2-F27474?style=flat-square&logo=datefns&logoColor=white)|
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### 3. Back-End
 
 | 사용기술 | 설명 | Badge |
 | :---:| :---: | :---: |
@@ -163,7 +186,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
     *어떤 상황
        
     ⇒ **해결방법**: 이슈 처리<br>
-
-
-
-       
