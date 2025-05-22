@@ -6,7 +6,7 @@
     },
     {
       "source": "/upload/:match*",
-      "destination": "http://yeon.dothome.co.kr/admin/product/:match*"
+      "destination": "http://yeon.dothome.co.kr/admin/product/upload/:match*"
     }
   ]
 }

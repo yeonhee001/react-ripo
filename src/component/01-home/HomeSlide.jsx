@@ -8,7 +8,7 @@ function HomeSlide({ imgurl, name, type, id }) {
     <div>
         <NavLink to={`/product/${type}/${id}`}>
             <p className='home-mainimg'>
-                <img src={`/upload/${firstImg}`} alt="메인슬라이드-img" />
+                <img src={`/${firstImg}`} alt="메인슬라이드-img" />
             </p>
             <div className='home-main-text'>
                 <p>{name}</p>
