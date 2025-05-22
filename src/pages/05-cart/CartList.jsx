@@ -69,6 +69,8 @@ function CartList() {
     
     axios.get(`${process.env.REACT_APP_APIURL}/api/cart.php?mem_id=${memId}`)
     .then(res=>{
+      console.log(res.data);
+      
       setCartList(res.data);
       localStorage.setItem('cart', JSON.stringify(res.data));
     })
