@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/:match*",
-      "destination": "http://yeon.dothome.co.kr/:match*"
+      "source": "/admin/api/:match*",
+      "destination": "http://yeon.dothome.co.kr/admin/api/:match*"
     }
   ]
 }
