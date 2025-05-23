@@ -48,6 +48,22 @@ function SearchDetail() {
   const items = [...searchResult];
   if(items.length % 2 !== 0) items.push({ id: 'placeholder', isPlaceholder: true })
 
+  // 로딩처리
+  useEffect(()=>{
+    if(searchResult !== null){
+      const timer = setTimeout(()=>{
+        setLoading(false);
+      },300);
+      return ()=>clearTimeout(timer);
+    }
+  },[searchResult]);
+
+  if(loading){
+    return(
+      <DataLoading/>
+    )
+  }
+  
   return (
     <div className='search-detail'>
       <div className='search-detail-bar'>
