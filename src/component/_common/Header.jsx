@@ -26,7 +26,7 @@ function Header() {
   let head;
   if(pathname==='/'){ 
     head = <img src='/imgs/logo.svg' alt=''/>;
-  } else if (pathname==='/search' || pathname==='/category' || pathname==='/cart' || pathname==='/my' || pathname==='/splash') {
+  } else if (pathname==='/search' || pathname==='/category' || pathname==='/cart' || pathname==='/my' || pathname==='/splash' || pathname==='/login') {
     head = "";
   } else if (pathname==='/pay/done' || pathname==='/my/orderlist') {
     head = <CloseIcon className={'closeicon'} onClick={handleCloseIcon}/>;
