@@ -32,6 +32,9 @@ function My() {
     setShowPopoup(false);
   };
 
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
   
   useEffect(()=>{
     const memId = sessionStorage.getItem('mem_id');
