@@ -30,7 +30,6 @@ https://ripo-tau.vercel.app
 
 ### 3. 핵심 기능
 
-* SPA (Single Page Application) 기반으로 페이지 이동 없이 빠른 이용 경험 제공
 * 카테고리별 상품 리스트 및 상세 정보 제공
 * 사용자 맞춤 검색 기능
 * 장바구니를 통한 상품 보관 및 선택 결제 기능
