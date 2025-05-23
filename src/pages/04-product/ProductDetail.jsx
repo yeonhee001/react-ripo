@@ -25,6 +25,10 @@ function ProductDetail() {
   const [categoryMain, setCategoryMain] = useState(null);
   const [notFound, setNotFound] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
   
   // 모든 데이터 중 파라미터 id값과 일치하는 id값의 상품 데이터 가져오기.
   useEffect(()=>{

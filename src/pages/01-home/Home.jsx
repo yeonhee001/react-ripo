@@ -42,6 +42,10 @@ function Home() {
     }
   ]
 
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
+
   // 모든 상품 데이터 가져오기
   useEffect(()=>{
     axios.get(`${process.env.REACT_APP_APIURL}/api/p_list.php`)
