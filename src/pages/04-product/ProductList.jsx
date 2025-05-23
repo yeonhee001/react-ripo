@@ -10,14 +10,17 @@ import '../../styles/04-product/productList.scss'
 function ProductList() {
   const { type } = useParams();
   const [listItem, setListItem] = useState([]);
-  const [ctgrItem, setCtgrItem] = useState([]);
+  const [ctgrItem, setCtgrItem] = useState(null);
   const [notFound, setNotFound] = useState(false);
   const [loading, setLoading] = useState(true); // 데이터 로딩
 
   // 모든 카테고리 가져와 파라미터와 일치하는 카테고리의 id값 가져오기
   useEffect(()=>{
+    window.scrollTo(0,0);
+    
     if (!type) {
       setNotFound(true);
+      setLoading(false);
       return;
     }
 
@@ -45,7 +48,7 @@ function ProductList() {
 
   // 파라미터로 구한 카테고리 id값과 상품 데이터 내 카테고리 id값과 일치하는 데이터만 가져오기
   useEffect(()=>{
-    if (ctgrItem === '') return;
+    if (!ctgrItem) return;
 
     axios.get(`${process.env.REACT_APP_APIURL}/api/p_list.php`)
     .then(res => {
