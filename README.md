@@ -1,6 +1,10 @@
+<!-- ![Image](https://github.com/user-attachments/assets/21d84399-3377-479d-a22f-bcc3f3af0083)-->
+<!-- ![Image](https://github.com/user-attachments/assets/398f9b96-c2ab-4967-ac5f-819f9c52668f)-->
+![Image](https://github.com/user-attachments/assets/1f19a213-a37a-4a84-a954-1609f55c9b25)
+
 
 ## ✨ 소개
-좋아하는 모든 것을 기록하는 SPA 웹사이트, <b>"Ripo"</b> 입니다.
+소소한 일상을 채워주는 디자인 문구와 아이템을 소개하는 SPA 웹사이트, <b>"Ripo"</b> 입니다.
 
 자신만의 일상과 감정을 감성적으로 기록하고 꾸밀 수 있는 공간을 제공하여, <br>
 소소한 순간들을 소중하게 남길 수 있도록 합니다. <br>
