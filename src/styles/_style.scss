@@ -298,7 +298,7 @@ input, textarea{
             text-overflow: ellipsis;
 
             word-break: break-word; /* 긴 단어도 줄 바꿈 시도 */
-            overflow-wrap: break-word; /* 최신 권장 */
+            overflow-wrap: break-word;
         }
         span{font-family: 'S-CoreDream-5Medium'; font-size: 20px;}
     }
