@@ -41,7 +41,7 @@ https://ripo-tau.vercel.app
 ### 4. 주요 기술 스택
 
 * Front-End : React, React Router
-* Back-End : Node.js, PHP
+* Back-End : Node.js, PHP, XAMPP
 * Data-Base : MySQL
 
 ## 📆 기간 및 인원
