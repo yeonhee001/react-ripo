@@ -10,6 +10,10 @@ function Category() {
   const [catData, setCatData] = useState([]);
 
   useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
+  
+  useEffect(()=>{
     axios.get(`${process.env.REACT_APP_APIURL}/api/category.php`)
     .then(res=>{
       setCatData(res.data)

@@ -11,6 +11,10 @@ function OrderList() {
   const [ctgrList, setCtgrList] = useState([]); // 카테고리 리스트
 
   useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
+  
+  useEffect(()=>{
     const memId = sessionStorage.getItem('mem_id');
 
     axios.get(`${process.env.REACT_APP_APIURL}/api/orders.php?mem_id=${memId}`)
