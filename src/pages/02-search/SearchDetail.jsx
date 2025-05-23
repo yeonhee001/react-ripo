@@ -6,12 +6,14 @@ import SearchBar from '../../component/02-search/SearchBar';
 import SearchIconPurple from '../../component/icons/SearchIconPurple';
 import InfoMessage from '../../component/_common/InfoMessage';
 import TopIcon from '../../component/icons/TopIcon';
+import DataLoading from '../../component/_common/DataLoading';
 import '../../styles/02-search/searchDetail.scss';
 
 function SearchDetail() {
   const navi = useNavigate();
   const { word } = useParams();
-
+  
+  const [loading, setLoading] = useState(true); // 데이터 로딩
   const [tempInput, setTempInput] = useState(''); //검색어 입력중
   const [searchInput, setSearchInput] = useState(''); //검색한 단어 저장
   const [searchResult, setSearchResult] = useState([]); // 검색한 단어에 대한 데이터 저장
