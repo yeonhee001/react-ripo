@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import LoginForm from '../../component/00-login/LoginForm'
 import BtnLong from '../../component/_common/BtnLong'
 import AlertBtn1 from '../../component/_common/AlertBtn1'
@@ -16,6 +16,10 @@ function Login() {
   const signupBtn = (to)=>{
     if(to) navi(to);
   }
+  
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
 
   function showLoginError() {
     setLoginError(true);
@@ -33,13 +37,11 @@ function Login() {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-      withCredentials: true,  // ★ 쿠키 포함 요청
+      withCredentials: true,  // 쿠키 포함 요청
     })
-    // 내꺼 닷홈 사이트 http://yeon.dothome.co.kr/admin/api/member.php
     .then(res=>{
       // console.log(res.data);
       if (res.data.success) {
-        // console.log("✅ 로그인 성공!");
         setLoginError(false);
         navi("/");  // 홈으로 이동
         sessionStorage.setItem('mem_id', res.data.mem_id);
