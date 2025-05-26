@@ -175,8 +175,19 @@ https://ripo-tau.vercel.app
 | **Figma** | **디자인 & UI/UX**|![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white) |
 
 
-# 📝 소연희의 개발 상세
+## 📚 프로젝트 문서 자료
 
+| 문서종류 | 파일명 | 설명 |
+| :---:| :---: | :---: |
+| 화면설계 | [화면설계.pdf](https://github.com/yeonhee001/ripo/blob/main/semi%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_B%ED%8C%80_01%EA%B8%B0%ED%9A%8D%2C%ED%99%94%EB%A9%B4%EC%84%A4%EA%B3%84.pdf) | 주요 페이지의 화면 구성, 사용자 흐름 등 와이어프레임 기반 설계 자료 |
+| 디자인 | [디자인.pdf](https://github.com/yeonhee001/ripo/blob/main/semi%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_B%ED%8C%80_02%EB%94%94%EC%9E%90%EC%9D%B8.pdf) | Figma로 작업한 디자인 시안. 색상, 폰트, UI 요소 등 자료 |
+| 발표자료 | [발표자료.pdf]() | 팀 프로젝트 발표용 슬라이드 자료 |
+| 완료 보고서 | [완료보고서.hwp](https://github.com/yeonhee001/ripo/blob/main/semi%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_B%ED%8C%80_%EC%99%84%EB%A3%8C%EB%B3%B4%EA%B3%A0%EC%84%9C.hwp) | 프로젝트 진행 결과 요약 등 최종 보고 |
+
+
+# 소연희의 개발 상세
+
+## 📑 요약
 * 담당
   * 스플래시 화면 구현
   * 로그인/로그아웃 기능 구현
