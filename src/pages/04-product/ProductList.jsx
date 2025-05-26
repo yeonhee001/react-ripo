@@ -74,29 +74,44 @@ function ProductList() {
 
   return (
     <div className='product-list'>
-      <h2 className='all-menu-title'>{ctgrItem.cat_name ? ctgrItem.cat_name : ctgrItem}</h2>
-      <p className='product-list-num'><span>{listItem.length}</span>개</p>
-      { !notFound ? (
-        <div className='product-list-item-box'>
-          {
-            items.map(product => (
+      {/* 데이터가 있을 경우 */}
+      {(!notFound && listItem.length > 0) ? (
+        <>
+          {/* 페이지 상단 타이틀 */}
+          <h2 className='all-menu-title'>
+            {ctgrItem.cat_name ? ctgrItem.cat_name : ctgrItem}
+          </h2>
+          
+          {/* 총 상품 개수 */}
+          <p className='product-list-num'><span>{listItem.length}</span>개</p>
+
+          {/* 상품 리스트 */}
+          <div className='product-list-item-box'>
+            {items.map(product => 
               product.isPlaceholder ? (
+                // 홀수 맞춤용 빈 박스
                 <div key='placeholder' className='carditem placeholder'></div>
               ) : (
+                // 상품 (카드 형태)
                 <div key={product.id} className='carditem'>
                   <CardItem
-                    imgurl={product.p_thumb}
-                    name={product.p_name}
-                    price={product.p_price}
-                    id={product.id}
-                    type={type}
+                    imgurl={product.p_thumb}   // 썸네일 이미지
+                    name={product.p_name}      // 상품명
+                    price={product.p_price}    // 가격
+                    id={product.id}            // 상품 id
+                    type={type}                // 현재 카테고리명
                   />
                 </div>
               )
-            ))
-          }
-        </div>
-      ) : <InfoMessage type={'noproduct'}/>}
+            )}
+          </div>
+        </>
+      ) : (
+        // 카테고리 or 데이터가 없을 경우 안내 메시지
+        <InfoMessage type={'noproduct'} />
+      )}
+
+      {/* 탑버튼 */}
       <TopIcon className={'search-detail-topicon'}/>
     </div>
   )
