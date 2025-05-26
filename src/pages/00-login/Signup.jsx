@@ -23,9 +23,6 @@ function Signup() {
   const [agreeOption2, setAgreeOption2] = useState(false);
   const [agreePopupType, setAgreePopupType] = useState(null);
 
-  // const openPopup = (type)=>{
-  //   setAgreePopupType(type);
-  // }
   const popupConfirm = ()=>{
     if(agreePopupType==='popup01'){setAgreeOption1(true);} 
     else if(agreePopupType==='popup02'){setAgreeOption2(true);} 
@@ -42,8 +39,7 @@ function Signup() {
 
   function join(e){
     e.preventDefault();
-
-
+    
     const formdata = new FormData();
     formdata.append('name',jointext1);
     formdata.append('id',jointext2);
@@ -55,7 +51,6 @@ function Signup() {
         'Content-Type': 'multipart/form-data',
       }
     })
-      // 내꺼 닷홈 사이트 http://yeon.dothome.co.kr/admin/api/member.php
   }
 
   return (
