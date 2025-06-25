@@ -1,8 +1,4 @@
-<!-- ![Image](https://github.com/user-attachments/assets/21d84399-3377-479d-a22f-bcc3f3af0083)-->
-<!-- ![Image](https://github.com/user-attachments/assets/398f9b96-c2ab-4967-ac5f-819f9c52668f)-->
-<!-- ![Image](https://github.com/user-attachments/assets/a467f2b0-2d2c-45fc-b56c-b3a2bd830343)-->
-![Image](https://github.com/user-attachments/assets/91c27f13-dec4-40b2-8f82-425733d1caf3)
-
+![Image](https://github.com/user-attachments/assets/358e24e2-0947-410b-b7b8-9e29915d51e8)
 
 ## ✨ 소개
 소소한 일상을 채워주는 디자인 문구와 아이템을 소개하는 SPA 웹사이트, <b>"Ripo"</b> 입니다.
